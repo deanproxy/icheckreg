@@ -23,6 +23,9 @@
 		05C20B1214537FCF004F3E77 /* icheckregTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C20B1114537FCF004F3E77 /* icheckregTests.m */; };
 		05C20B1D14538975004F3E77 /* ExpensesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C20B1C14538975004F3E77 /* ExpensesViewController.m */; };
 		05C20B25145484D3004F3E77 /* AddExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C20B24145484D3004F3E77 /* AddExpenseViewController.m */; };
+		05E43F1214564EEA00C17EA7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E43F1114564EEA00C17EA7 /* CoreData.framework */; };
+		05E43F1514564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */; };
+		05E43F1614564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,8 @@
 		05C20B1C14538975004F3E77 /* ExpensesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpensesViewController.m; sourceTree = "<group>"; };
 		05C20B23145484D3004F3E77 /* AddExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddExpenseViewController.h; sourceTree = "<group>"; };
 		05C20B24145484D3004F3E77 /* AddExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExpenseViewController.m; sourceTree = "<group>"; };
+		05E43F1114564EEA00C17EA7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		05E43F1414564F1500C17EA7 /* checkreg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = checkreg.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05E43F1214564EEA00C17EA7 /* CoreData.framework in Frameworks */,
 				05C20AE114537FCE004F3E77 /* UIKit.framework in Frameworks */,
 				05C20AE314537FCE004F3E77 /* Foundation.framework in Frameworks */,
 				05C20AE514537FCE004F3E77 /* CoreGraphics.framework in Frameworks */,
@@ -108,6 +114,7 @@
 		05C20ADF14537FCE004F3E77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05E43F1114564EEA00C17EA7 /* CoreData.framework */,
 				05C20AE014537FCE004F3E77 /* UIKit.framework */,
 				05C20AE214537FCE004F3E77 /* Foundation.framework */,
 				05C20AE414537FCE004F3E77 /* CoreGraphics.framework */,
@@ -130,6 +137,7 @@
 				05C20AE714537FCE004F3E77 /* Supporting Files */,
 				05C20B23145484D3004F3E77 /* AddExpenseViewController.h */,
 				05C20B24145484D3004F3E77 /* AddExpenseViewController.m */,
+				05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */,
 			);
 			path = icheckreg;
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 				05C20AFA14537FCE004F3E77 /* icheckregMasterViewController.m in Sources */,
 				05C20B1D14538975004F3E77 /* ExpensesViewController.m in Sources */,
 				05C20B25145484D3004F3E77 /* AddExpenseViewController.m in Sources */,
+				05E43F1514564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05C20B1214537FCF004F3E77 /* icheckregTests.m in Sources */,
+				05E43F1614564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +465,7 @@
 				05C20B1714537FCF004F3E77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		05C20B1814537FCF004F3E77 /* Build configuration list for PBXNativeTarget "icheckregTests" */ = {
 			isa = XCConfigurationList;
@@ -463,8 +474,22 @@
 				05C20B1A14537FCF004F3E77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				05E43F1414564F1500C17EA7 /* checkreg.xcdatamodel */,
+			);
+			currentVersion = 05E43F1414564F1500C17EA7 /* checkreg.xcdatamodel */;
+			path = checkreg.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 05C20AD314537FCE004F3E77 /* Project object */;
 }
