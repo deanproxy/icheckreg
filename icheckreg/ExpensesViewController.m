@@ -7,28 +7,28 @@
 //
 
 #import "ExpensesViewController.h"
+#import "Expense.h"
+#import "icheckregAppDelegate.h"
 
 @implementation ExpensesViewController
 
-@synthesize listData;
+@synthesize listData = _listData;
+@synthesize context = _context;
 
 - (void)viewDidLoad {
-    self.listData = [[NSArray alloc] initWithObjects: 
-                     [[NSArray alloc] initWithObjects:
-                        [[Expense alloc] initWithString: @"Fuck" date:@"October 12, 2011" total:-100.0001], 
-                        [[Expense alloc] initWithString: @"Tuple" date:@"October 12, 2011" total:-50.010012],
-                        [[Expense alloc] initWithString: @"Dean is Great" date:@"October 12, 2011" total:200.0332],
-                        nil
-                     ],
-                     [[NSArray alloc] initWithObjects:
-                        [[Expense alloc] initWithString: @"Stuff" date:@"December 12, 2010" total:-12.1111],
-                        [[Expense alloc] initWithString: @"Posters" date:@"December 12, 2010" total:-42.011],
-                        [[Expense alloc] initWithString: @"Monitor" date:@"December 12, 2010" total:-53.3433],
-                        nil 
-                     ],
-                     nil
-                    ];
     [super viewDidLoad];
+    
+    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    self.context = [delegate managedObjectContext];
+    NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription 
+                                   entityForName:@"Expense" inManagedObjectContext:self.context];
+    [fetch setEntity:entity];
+    NSError *error;
+    self.listData = [self.context executeFetchRequest:fetch error:&error]; 
+    if (self.listData == nil) {
+        NSLog(@"Failed to get data: %@ [%@]", error, [error userInfo]);
+    }
 }
 
 - (void)viewDidUnload {
@@ -43,13 +43,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     /* This should be the number of rows available for a specific day */
-    return [[self.listData objectAtIndex:section] count];
+    return [self.listData count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     /* This should be the date for each section (Oct 22nd, 2011) */
-    Expense *expense = [[self.listData objectAtIndex:section] objectAtIndex:0];
-    return expense.date;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MMM d, yyyy"];
+    Expense *expense = [self.listData objectAtIndex:section];
+    return [dateFormat stringFromDate:expense.created_at] ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,14 +65,14 @@
     }
     NSUInteger section = [indexPath section];
     NSUInteger row = [indexPath row];
-    Expense *expense = [[listData objectAtIndex:section] objectAtIndex:row];
+    Expense *expense = [self.listData objectAtIndex:row];
     cell.textLabel.text = expense.note;
-    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"$%.02f", expense.total];
+    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"$%.02f", [expense.total floatValue]];
 
     /* For some reason the background colors are black... Need to set to white. */
     [cell.textLabel setBackgroundColor:[UIColor whiteColor]];
     [cell.detailTextLabel setBackgroundColor:[UIColor whiteColor]];
-    if (expense.total > -1) {
+    if ([expense.total floatValue] > -1) {
         /* If the item is a deposit, make it stand out. */
         cell.detailTextLabel.textColor = [UIColor greenColor];
     }
@@ -80,19 +82,3 @@
 
 @end
 
-@implementation Expense
-
-@synthesize note=_note;
-@synthesize date=_date;
-@synthesize total=_total;
-                                                    
-- (id)initWithString: (NSString *)newNote date:(NSString *)newDate total:(float)newTotal {
-    if (self = [super init]) {
-        self.note = newNote;
-        self.date = newDate;
-        self.total = newTotal;
-    }
-    return self;
-}
-
-@end

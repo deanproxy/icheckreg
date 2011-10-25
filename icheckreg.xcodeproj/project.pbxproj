@@ -23,6 +23,10 @@
 		05C20B1214537FCF004F3E77 /* icheckregTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C20B1114537FCF004F3E77 /* icheckregTests.m */; };
 		05C20B1D14538975004F3E77 /* ExpensesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C20B1C14538975004F3E77 /* ExpensesViewController.m */; };
 		05C20B25145484D3004F3E77 /* AddExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C20B24145484D3004F3E77 /* AddExpenseViewController.m */; };
+		05DD18E8145662CD00CAFC9D /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DD18E7145662CD00CAFC9D /* Expense.m */; };
+		05DD18E9145662CD00CAFC9D /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DD18E7145662CD00CAFC9D /* Expense.m */; };
+		05DD18F514566EF700CAFC9D /* Total.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DD18F414566EF700CAFC9D /* Total.m */; };
+		05DD18F614566EF700CAFC9D /* Total.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DD18F414566EF700CAFC9D /* Total.m */; };
 		05E43F1214564EEA00C17EA7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E43F1114564EEA00C17EA7 /* CoreData.framework */; };
 		05E43F1514564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */; };
 		05E43F1614564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */; };
@@ -63,6 +67,10 @@
 		05C20B1C14538975004F3E77 /* ExpensesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpensesViewController.m; sourceTree = "<group>"; };
 		05C20B23145484D3004F3E77 /* AddExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddExpenseViewController.h; sourceTree = "<group>"; };
 		05C20B24145484D3004F3E77 /* AddExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddExpenseViewController.m; sourceTree = "<group>"; };
+		05DD18E6145662CD00CAFC9D /* Expense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expense.h; sourceTree = "<group>"; };
+		05DD18E7145662CD00CAFC9D /* Expense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expense.m; sourceTree = "<group>"; };
+		05DD18F314566EF700CAFC9D /* Total.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Total.h; sourceTree = "<group>"; };
+		05DD18F414566EF700CAFC9D /* Total.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Total.m; sourceTree = "<group>"; };
 		05E43F1114564EEA00C17EA7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		05E43F1414564F1500C17EA7 /* checkreg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = checkreg.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +134,8 @@
 		05C20AE614537FCE004F3E77 /* icheckreg */ = {
 			isa = PBXGroup;
 			children = (
+				05DD18F314566EF700CAFC9D /* Total.h */,
+				05DD18F414566EF700CAFC9D /* Total.m */,
 				05C20AEF14537FCE004F3E77 /* icheckregAppDelegate.h */,
 				05C20AF014537FCE004F3E77 /* icheckregAppDelegate.m */,
 				05C20AF214537FCE004F3E77 /* MainStoryboard_iPhone.storyboard */,
@@ -138,6 +148,8 @@
 				05C20B23145484D3004F3E77 /* AddExpenseViewController.h */,
 				05C20B24145484D3004F3E77 /* AddExpenseViewController.m */,
 				05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */,
+				05DD18E6145662CD00CAFC9D /* Expense.h */,
+				05DD18E7145662CD00CAFC9D /* Expense.m */,
 			);
 			path = icheckreg;
 			sourceTree = "<group>";
@@ -285,6 +297,8 @@
 				05C20B1D14538975004F3E77 /* ExpensesViewController.m in Sources */,
 				05C20B25145484D3004F3E77 /* AddExpenseViewController.m in Sources */,
 				05E43F1514564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */,
+				05DD18E8145662CD00CAFC9D /* Expense.m in Sources */,
+				05DD18F514566EF700CAFC9D /* Total.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +308,8 @@
 			files = (
 				05C20B1214537FCF004F3E77 /* icheckregTests.m in Sources */,
 				05E43F1614564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */,
+				05DD18E9145662CD00CAFC9D /* Expense.m in Sources */,
+				05DD18F614566EF700CAFC9D /* Total.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

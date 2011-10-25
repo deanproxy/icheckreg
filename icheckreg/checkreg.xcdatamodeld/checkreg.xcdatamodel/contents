@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Expense" syncable="YES">
-        <attribute name="created_at" attributeType="Date" syncable="YES"/>
+    <entity name="Expense" representedClassName="Expense" syncable="YES">
+        <attribute name="created_at" optional="YES" attributeType="Date" defaultDateTimeInterval="341164800" defaultValueString="&quot;Now&quot;" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="note" attributeType="String" syncable="YES"/>
         <attribute name="synced" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="total" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="Total" syncable="YES">
+    <entity name="Total" representedClassName="Total" syncable="YES">
         <attribute name="total" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>

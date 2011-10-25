@@ -13,17 +13,7 @@
 }
 
 @property (nonatomic, retain) NSArray *listData;
+@property (nonatomic, retain) NSManagedObjectContext *context;
 
 @end
 
-@interface Expense : NSObject {
-
-}
-
-@property(nonatomic, retain) NSString *note;
-@property(nonatomic, retain) NSString *date;
-@property(nonatomic) float total;
-
-- (id)initWithString: (NSString *)newNote date:(NSString *)newDate total:(float)newTotal;
-
-@end

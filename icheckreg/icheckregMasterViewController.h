@@ -14,6 +14,8 @@
     
 }
 
+@property (nonatomic, retain) NSManagedObjectContext *context;
+
 - (IBAction)settings:(id)sender;
 
 @end

@@ -11,6 +11,8 @@
 
 @implementation icheckregMasterViewController
 
+@synthesize context = _context;
+
 
 - (void)awakeFromNib
 {
