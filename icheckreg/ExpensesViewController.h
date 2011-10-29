@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMDatabase.h"
 
 @interface ExpensesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-    sqlite3 *database;
+    uint totalRows;
+    uint offset;
+    FMDatabase *db;
+    UIActivityIndicatorView *loadMoreIndicator;
 }
 
 @property (nonatomic, retain) NSMutableArray *listData;
@@ -21,7 +25,7 @@
     int expenseId;
     NSString *note;
     NSNumber *total;
-    NSString *created_at;
+    NSDate *created_at;
     BOOL synced;
 }
 

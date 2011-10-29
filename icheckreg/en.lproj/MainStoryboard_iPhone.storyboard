@@ -213,7 +213,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="dataSource" destination="o5J-87-Qt3" id="ufE-as-uHs"/>
-                                    <outlet property="delegate" destination="o5J-87-Qt3" id="VNZ-g8-Ok6"/>
+                                    <outlet property="delegate" destination="o5J-87-Qt3" id="2E2-Q3-0zY"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -251,6 +251,27 @@
             <point key="canvasLocation" x="455" y="669"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AddExpenseViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddExpenseViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="amount" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="deposit" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ExpensesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExpensesViewController.h"/>
+        </class>
+        <class className="icheckregMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/icheckregMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="settings:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

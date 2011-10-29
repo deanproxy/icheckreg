@@ -20,7 +20,7 @@
     if (sqlite3_open([[dbPath absoluteString] UTF8String], &database) != SQLITE_OK) {
         NSAssert(0, @"Failed to open database.");
     }
-    NSString *query = @"create table if not exists expense (id integer primary key autoincrement, synced boolean not null default false, note varchar(255) not null, total float not null, created_at datetime not null default current_date)";
+    NSString *query = @"create table if not exists expense (id integer primary key autoincrement, synced boolean not null default false, note varchar(50) not null, total float not null, created_at datetime not null default current_timestamp)";
     char *errorMsg = NULL;
     if (sqlite3_exec(database, [query UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
         NSAssert1(0, @"Error creating table: %s", errorMsg);

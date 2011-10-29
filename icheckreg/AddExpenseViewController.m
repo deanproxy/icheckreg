@@ -7,6 +7,7 @@
 //
 
 #import "AddExpenseViewController.h"
+#import "icheckregAppDelegate.h"
 
 @implementation AddExpenseViewController
 
@@ -24,6 +25,10 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Results" 
                                                     message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
+    
+//    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+//    NSURL *dbPath = [delegate dbFilePath];
+//    const char *charDbPath = [[dbPath absoluteString] UTF8String];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
