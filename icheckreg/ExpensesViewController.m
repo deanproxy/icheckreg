@@ -15,12 +15,21 @@
 
 const uint MAX_PAGE_ROWS = 50;
 
+
 - (void)getExpenses {
     NSMutableArray *currentList = nil;
     NSString *prevDate = nil;
+    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    FMDatabase *db = delegate.db;
     
-    NSString *query = [[NSString alloc] initWithFormat:@"select id,synced,note,total,created_at from expense order by created_at desc limit %d,%d", offset, MAX_PAGE_ROWS];
+    NSString *query = [[NSString alloc] initWithFormat:@"select id,synced,note,total,created_at from expenses order by created_at desc limit %d,%d", offset, MAX_PAGE_ROWS];
+    NSLog(@"%@", query);
     FMResultSet *resultSet = [db executeQuery:query];
+    
+    /* If list is already populated, get the last object */
+    if ([self.listData count] > 0) {
+        currentList = [self.listData lastObject];
+    }
     while ([resultSet next]) {
         Expense *expense = [[Expense alloc] init];
         expense->expenseId = [resultSet intForColumn:@"id"];
@@ -35,10 +44,13 @@ const uint MAX_PAGE_ROWS = 50;
         
         [format setDateFormat:@"yyyy-MM-dd"];
         NSString *thisDate = [format stringFromDate:expense->created_at];
-        /* If listData has been populated before, try to get the last date */
-        if (prevDate == nil && [self.listData count] > 0) {
-            prevDate = [format stringFromDate:[[self.listData lastObject] objectAtIndex:0]];
+        /* If list has been populated before, try to get the last date */
+        if (prevDate == nil && currentList != nil) {
+            Expense *last = [currentList objectAtIndex:0];
+            prevDate = [format stringFromDate:last->created_at];
         }
+        
+        /* if the current date doesn't match the previous date, we're creating a new section */
         if (prevDate == nil || [prevDate compare:thisDate] != NSOrderedSame) {
             prevDate = [format stringFromDate:expense->created_at];
             currentList = [[NSMutableArray alloc] init];
@@ -47,6 +59,16 @@ const uint MAX_PAGE_ROWS = 50;
         [currentList addObject:expense];
     }
     offset += MAX_PAGE_ROWS;
+    NSLog(@"listData count == %d", [self.listData count]);
+    for (NSMutableArray *i in self.listData) {
+        NSLog(@"sub == %d", [i count]);
+    }
+}
+
+
+- (void)autoLoadExpenses:(UITableView *)tableView {
+    [self getExpenses];
+    [tableView  reloadData];
 }
 
 - (void)viewDidLoad {
@@ -55,17 +77,12 @@ const uint MAX_PAGE_ROWS = 50;
     offset = 0;
     _listData = [[NSMutableArray alloc] init];
     icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSURL *dbPath = [delegate dbFilePath];
     
-    self->db = [FMDatabase databaseWithPath:[dbPath absoluteString]];
-    if (![self->db open]) {
-        NSAssert(0, @"Failed to open database");
-    }
     [self getExpenses];
     
     /* Get total rows available */
-    NSString *query = @"select count(1) from expense";
-    FMResultSet *resultSet = [db executeQuery:query];
+    NSString *query = @"select count(1) from expenses";
+    FMResultSet *resultSet = [delegate.db executeQuery:query];
     if ([resultSet next]) {
         self->totalRows = [resultSet intForColumnIndex:0];
     }
@@ -73,7 +90,6 @@ const uint MAX_PAGE_ROWS = 50;
 
 - (void)viewDidUnload {
     self.listData = nil;
-    [self->db close];
     [super viewDidUnload];
 }
 
@@ -103,15 +119,6 @@ const uint MAX_PAGE_ROWS = 50;
     NSUInteger sec = [indexPath section];
     NSUInteger row = [indexPath row];
     
-    /** THE TABLE CELL WILL NOT DESELECT!!! */
-    if (sec+1 == [self.listData count] && row >= [[self.listData objectAtIndex:sec] count]) {
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
-        [self->loadMoreIndicator startAnimating];
-        sleep(4);
-        [self getExpenses];
-        [tableView reloadData];
-        [self->loadMoreIndicator stopAnimating];
-    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -135,13 +142,12 @@ const uint MAX_PAGE_ROWS = 50;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"LoadMore"];            
         }
-        cell.textLabel.text = @"Load more...";
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
-        cell.textLabel.textColor = [[UIColor alloc] initWithRed:0.219 green:0.330 blue:0.529 alpha:1.0];
-        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d total expenses", self->totalRows];
         
-        loadMoreIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [cell setAccessoryView:loadMoreIndicator];
+        UIActivityIndicatorView *loadMoreIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        loadMoreIndicator.center = CGPointMake(cell.contentView.bounds.size.width/2, cell.contentView.bounds.size.height/2);
+        [cell addSubview:loadMoreIndicator];
+        [loadMoreIndicator startAnimating];
+        [NSThread detachNewThreadSelector:@selector(autoLoadExpenses:) toTarget:self withObject:tableView];
     } else {
         /* Ask for a pre-used cell (one that may be off the screen) */
         cell = [tableView dequeueReusableCellWithIdentifier:TableIdentifier];
@@ -175,6 +181,13 @@ const uint MAX_PAGE_ROWS = 50;
     
 
     return cell;
+}
+
+- (void)updateFromChild {
+    [self getExpenses];
+    /* IS IT POSSIBLE TO DO THIS?  WILL WE GET A TABLEVIEW BY DOING THIS? */
+    UITableViewController *me = (UITableViewController *)self;
+    [me.tableView reloadData];
 }
 
 @end

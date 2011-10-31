@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05965E66145B67B40009BBAD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 05965E50145B67B30009BBAD /* .gitignore */; };
-		05965E67145B67B40009BBAD /* CHANGES_AND_TODO_LIST.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05965E51145B67B30009BBAD /* CHANGES_AND_TODO_LIST.txt */; };
 		05965E68145B67B40009BBAD /* CONTRIBUTORS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05965E52145B67B30009BBAD /* CONTRIBUTORS.txt */; };
-		05965E69145B67B40009BBAD /* fmdb.1 in Resources */ = {isa = PBXBuildFile; fileRef = 05965E53145B67B30009BBAD /* fmdb.1 */; };
 		05965E6A145B67B40009BBAD /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05965E58145B67B30009BBAD /* LICENSE.txt */; };
 		05965E6B145B67B40009BBAD /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 05965E59145B67B30009BBAD /* README.markdown */; };
 		05965E6C145B67B40009BBAD /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 05965E5C145B67B30009BBAD /* FMDatabase.m */; };
@@ -63,9 +61,7 @@
 
 /* Begin PBXFileReference section */
 		05965E50145B67B30009BBAD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		05965E51145B67B30009BBAD /* CHANGES_AND_TODO_LIST.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGES_AND_TODO_LIST.txt; sourceTree = "<group>"; };
 		05965E52145B67B30009BBAD /* CONTRIBUTORS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONTRIBUTORS.txt; sourceTree = "<group>"; };
-		05965E53145B67B30009BBAD /* fmdb.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = fmdb.1; sourceTree = "<group>"; };
 		05965E54145B67B30009BBAD /* fmdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = fmdb.xcodeproj; sourceTree = "<group>"; };
 		05965E57145B67B30009BBAD /* fmdb_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmdb_Prefix.pch; sourceTree = "<group>"; };
 		05965E58145B67B30009BBAD /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -76,6 +72,7 @@
 		05965E5E145B67B30009BBAD /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
 		05965E60145B67B30009BBAD /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		05965E61145B67B30009BBAD /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		05965E77145E3B3C0009BBAD /* CanAddExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanAddExpense.h; sourceTree = "<group>"; };
 		05C20ADC14537FCE004F3E77 /* icheckreg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icheckreg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C20AE014537FCE004F3E77 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		05C20AE214537FCE004F3E77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -133,9 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				05965E50145B67B30009BBAD /* .gitignore */,
-				05965E51145B67B30009BBAD /* CHANGES_AND_TODO_LIST.txt */,
 				05965E52145B67B30009BBAD /* CONTRIBUTORS.txt */,
-				05965E53145B67B30009BBAD /* fmdb.1 */,
 				05965E54145B67B30009BBAD /* fmdb.xcodeproj */,
 				05965E57145B67B30009BBAD /* fmdb_Prefix.pch */,
 				05965E58145B67B30009BBAD /* LICENSE.txt */,
@@ -214,6 +209,7 @@
 				05C20B23145484D3004F3E77 /* AddExpenseViewController.h */,
 				05C20B24145484D3004F3E77 /* AddExpenseViewController.m */,
 				05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */,
+				05965E77145E3B3C0009BBAD /* CanAddExpense.h */,
 			);
 			path = icheckreg;
 			sourceTree = "<group>";
@@ -345,9 +341,7 @@
 				05C20AF414537FCE004F3E77 /* MainStoryboard_iPhone.storyboard in Resources */,
 				05C20AF714537FCE004F3E77 /* MainStoryboard_iPad.storyboard in Resources */,
 				05965E66145B67B40009BBAD /* .gitignore in Resources */,
-				05965E67145B67B40009BBAD /* CHANGES_AND_TODO_LIST.txt in Resources */,
 				05965E68145B67B40009BBAD /* CONTRIBUTORS.txt in Resources */,
-				05965E69145B67B40009BBAD /* fmdb.1 in Resources */,
 				05965E6A145B67B40009BBAD /* LICENSE.txt in Resources */,
 				05965E6B145B67B40009BBAD /* README.markdown in Resources */,
 			);

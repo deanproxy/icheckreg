@@ -8,6 +8,7 @@
 
 #import "AddExpenseViewController.h"
 #import "icheckregAppDelegate.h"
+#import "CanAddExpense.h"
 
 @implementation AddExpenseViewController
 
@@ -21,14 +22,29 @@
 }
 
 - (IBAction)save:(id)sender {
-    NSString *message = [[NSString alloc] initWithFormat:@"%@ => %@", self.description.text, self.amount.text];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Results" 
-                                                    message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-    
-//    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-//    NSURL *dbPath = [delegate dbFilePath];
-//    const char *charDbPath = [[dbPath absoluteString] UTF8String];
+    float total = 0.0;
+    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    FMDatabase *db = delegate.db;
+    NSString *totalQuery = @"update total set total = ?";
+    FMResultSet *result = [db executeQuery:@"select total from total"]; 
+    if ([result next]) {
+        total = [result doubleForColumnIndex:0];
+    } else {
+        /* If we couldn't get anything from the total DB, we should insert */
+        totalQuery = @"insert into total (total) values(?)";
+    }
+    float expenseAmount = amount.text.floatValue;
+    if (!self->isDeposit) {
+        expenseAmount = -expenseAmount;
+    }
+    NSString *query = @"insert into expenses (note, total) values (?, ?)";
+    [db executeUpdate:query, self.description.text, [[NSNumber alloc] initWithFloat:expenseAmount]];
+    total += expenseAmount;
+    [db executeUpdate:totalQuery, [[NSNumber alloc] initWithFloat:total]];
+    /**
+     * NEED TO GET THE CALLING CONTROLLER SO WE CAN TELL IT WHATS UP.
+     */
+    [parentController updateFromChild];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

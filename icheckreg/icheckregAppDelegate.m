@@ -7,33 +7,30 @@
 //
 
 #import "icheckregAppDelegate.h"
+#import "FMDatabase.h"
 
 @implementation icheckregAppDelegate
 
 @synthesize window = _window;
+@synthesize db = _db;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    sqlite3 *database = nil;
     NSURL *dbPath = [self dbFilePath];
-    if (sqlite3_open([[dbPath absoluteString] UTF8String], &database) != SQLITE_OK) {
-        NSAssert(0, @"Failed to open database.");
-    }
-    NSString *query = @"create table if not exists expense (id integer primary key autoincrement, synced boolean not null default false, note varchar(50) not null, total float not null, created_at datetime not null default current_timestamp)";
-    char *errorMsg = NULL;
-    if (sqlite3_exec(database, [query UTF8String], NULL, NULL, &errorMsg) != SQLITE_OK) {
-        NSAssert1(0, @"Error creating table: %s", errorMsg);
-    }
-    query = @"insert into expense (note, total) values('Hello, Dean', -3.14159)";
-    sqlite3_exec(database, [query UTF8String], NULL, NULL, &errorMsg);
-    query = @"insert into expense (note, total) values('Big expense', -300.14159)";
-    sqlite3_exec(database, [query UTF8String], NULL, NULL, &errorMsg);
-    query = @"insert into expense (note, total) values('Money, money, money!', 500.14159)";
-    sqlite3_exec(database, [query UTF8String], NULL, NULL, &errorMsg);
-    
-    sqlite3_close(database);
+    self.db = [[FMDatabase alloc] initWithPath:[dbPath absoluteString]];
+    NSAssert(self.db != nil, @"Could get to database %@", [dbPath absoluteString]);
+    [self.db open];
+    NSString *query = @"create table if not exists expenses (id integer primary key autoincrement, synced boolean not null default false, note varchar(50) not null, total float not null, created_at datetime not null default current_timestamp)";
+    [self.db executeUpdate:query];
+
+    query = @"create table if not exists total (id integer primary key autoincrement, total float not null)";
+    [self.db executeUpdate:query];
+
     return YES;
+}
+
+- (void)dealloc {
+    [self.db close];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

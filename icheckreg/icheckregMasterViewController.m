@@ -7,12 +7,29 @@
 //
 
 #import "icheckregMasterViewController.h"
+#import "icheckregAppDelegate.h"
 #import "ExpensesViewController.h"
+#import "FMDatabase.h"
 
 @implementation icheckregMasterViewController
 
 @synthesize context = _context;
 
+- (NSNumber *)getTotal {
+    NSNumber *total = nil;
+    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    FMDatabase *db = delegate.db;
+    NSString *query = @"select total from total";
+    FMResultSet *result = [db executeQuery:query];
+    if ([result next]) {
+        float totalFromDb = [result doubleForColumnIndex:0];
+        total = [[NSNumber alloc] initWithFloat:totalFromDb];
+    } else {
+        NSLog(@"Couldn't get total from total table.");
+        total = [[NSNumber alloc] initWithFloat:0.0];
+    }
+    return total;
+}
 
 - (void)awakeFromNib
 {
@@ -78,12 +95,42 @@
     }
 }
 
+- (void)updateTotal:(UITableViewCell *)cell {
+    /* Update the total */
+    NSNumber *total = [self getTotal];
+    cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"$%.02f", [total floatValue]];
+    if ([total floatValue] > -1) {
+        /* If the item is a deposit, make it stand out. */
+        cell.detailTextLabel.textColor = [[UIColor alloc] initWithRed:0.0 green:153.0/255.0 blue:0.0 alpha:1.0];
+    } else {
+        /* This RGB value should be the default detail text color */
+        cell.detailTextLabel.textColor = [[UIColor alloc] initWithRed:255.0/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1.0];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger row = [indexPath row];
+    if (row == 0) {
+        [self updateTotal:cell];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger row = [indexPath row];
-    if (row == 1) {
+    if (row == 0) {
+        /* Update the total */
+        [self updateTotal:[tableView cellForRowAtIndexPath:indexPath]];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    } else if (row == 1) {
         ExpensesViewController *expenseView = [[ExpensesViewController alloc] init];
         [self.navigationController pushViewController:expenseView animated:YES];
     }
+}
+
+- (void)updateFromChild {
+    NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndex:0];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self updateTotal:cell];
 }
 
 

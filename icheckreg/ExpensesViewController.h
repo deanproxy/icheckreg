@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "FMDatabase.h"
+#import "CanAddExpense.h"
 
-@interface ExpensesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ExpensesViewController : UIViewController <CanAddExpense> {
     uint totalRows;
     uint offset;
-    FMDatabase *db;
-    UIActivityIndicatorView *loadMoreIndicator;
 }
 
 @property (nonatomic, retain) NSMutableArray *listData;

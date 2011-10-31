@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CanAddExpense.h"
 
 @class icheckregDetailViewController;
 
-@interface icheckregMasterViewController : UITableViewController {
-    
+@interface icheckregMasterViewController : UITableViewController <CanAddExpense, UITableViewDelegate, UITableViewDataSource> {
+   
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *context;
