@@ -8,7 +8,6 @@
 
 #import "AddExpenseViewController.h"
 #import "icheckregAppDelegate.h"
-#import "CanAddExpense.h"
 
 @implementation AddExpenseViewController
 
@@ -17,14 +16,20 @@
 @synthesize amount;
 @synthesize deposit;
 
+- (void)viewDidLoad {
+    if (self->expenseId > 0) {
+        
+    }
+}
+
 - (IBAction)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)save:(id)sender {
     float total = 0.0;
-    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    FMDatabase *db = delegate.db;
+    icheckregAppDelegate *app = [[UIApplication sharedApplication] delegate];
+    FMDatabase *db = app.db;
     NSString *totalQuery = @"update total set total = ?";
     FMResultSet *result = [db executeQuery:@"select total from total"]; 
     if ([result next]) {
@@ -38,13 +43,15 @@
         expenseAmount = -expenseAmount;
     }
     NSString *query = @"insert into expenses (note, total) values (?, ?)";
+    if (self->expenseId) {
+        query = @"update expense set note=?, total=?";
+    }
     [db executeUpdate:query, self.description.text, [[NSNumber alloc] initWithFloat:expenseAmount]];
     total += expenseAmount;
     [db executeUpdate:totalQuery, [[NSNumber alloc] initWithFloat:total]];
-    /**
-     * NEED TO GET THE CALLING CONTROLLER SO WE CAN TELL IT WHATS UP.
-     */
-    [parentController updateFromChild];
+
+    NSNotificationCenter *notifier = [NSNotificationCenter defaultCenter];
+    [notifier postNotificationName:@"AddExpense" object:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

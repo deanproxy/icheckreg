@@ -56,6 +56,8 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     }
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self selector:@selector(updateFromChild) name:@"AddExpense" object:nil];
 }
 
 - (void)viewDidUnload
@@ -128,7 +130,7 @@
 }
 
 - (void)updateFromChild {
-    NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndex:0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     [self updateTotal:cell];
 }

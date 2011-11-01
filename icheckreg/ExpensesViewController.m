@@ -8,10 +8,12 @@
 
 #import "ExpensesViewController.h"
 #import "icheckregAppDelegate.h"
+#import "FMResultSet.h"
 
 @implementation ExpensesViewController
 
 @synthesize listData = _listData;
+@synthesize tableView = _tableView;
 
 const uint MAX_PAGE_ROWS = 50;
 
@@ -32,7 +34,7 @@ const uint MAX_PAGE_ROWS = 50;
     }
     while ([resultSet next]) {
         Expense *expense = [[Expense alloc] init];
-        expense->expenseId = [resultSet intForColumn:@"id"];
+        expense->expenseId = [[NSNumber alloc] initWithInt:[resultSet intForColumn:@"id"]];
         expense->synced = [resultSet boolForColumn:@"synced"];
         
         expense->note = [resultSet stringForColumn:@"note"];
@@ -59,16 +61,12 @@ const uint MAX_PAGE_ROWS = 50;
         [currentList addObject:expense];
     }
     offset += MAX_PAGE_ROWS;
-    NSLog(@"listData count == %d", [self.listData count]);
-    for (NSMutableArray *i in self.listData) {
-        NSLog(@"sub == %d", [i count]);
-    }
 }
 
 
 - (void)autoLoadExpenses:(UITableView *)tableView {
     [self getExpenses];
-    [tableView  reloadData];
+    [self.tableView  reloadData];
 }
 
 - (void)viewDidLoad {
@@ -86,6 +84,9 @@ const uint MAX_PAGE_ROWS = 50;
     if ([resultSet next]) {
         self->totalRows = [resultSet intForColumnIndex:0];
     }
+    
+    NSNotificationCenter *notifier = [NSNotificationCenter defaultCenter];
+    [notifier addObserver:self selector:@selector(updateFromChild) name:@"AddExpense" object:nil];
 }
 
 - (void)viewDidUnload {
@@ -119,6 +120,22 @@ const uint MAX_PAGE_ROWS = 50;
     NSUInteger sec = [indexPath section];
     NSUInteger row = [indexPath row];
     
+    /* TODO: How do I present this screen? */
+    Expense *expense = [[self.listData objectAtIndex:sec] objectAtIndex:row];
+    AddExpenseViewController *editExpense = [[AddExpenseViewController alloc] init];
+    editExpense.delegate = self;
+    editExpense.description.text = expense->note;
+    editExpense.amount.text = [expense->total stringValue];
+    editExpense->expenseId = expense->expenseId;
+    if ([expense->total floatValue] >= 0.0) {
+        editExpense.deposit.accessoryType = UITableViewCellAccessoryCheckmark;
+        editExpense->isDeposit = YES;
+    } else {
+        editExpense.deposit.accessoryType = UITableViewCellAccessoryNone;
+        editExpense->isDeposit = NO;        
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [self.navigationController presentModalViewController:editExpense animated:YES];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -183,11 +200,48 @@ const uint MAX_PAGE_ROWS = 50;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSInteger sec = [indexPath section];
+        NSInteger row = [indexPath row];
+        Expense *expense = [[self.listData objectAtIndex:sec] objectAtIndex:row];
+        NSString *query = @"delete from expenses where id=?";
+        icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        [delegate.db executeUpdate:query, expense->expenseId];
+        query = @"select total from total";
+        FMResultSet *result = [delegate.db executeQuery:query];
+        if ([result next]) {
+            float total = [result doubleForColumnIndex:0];
+            total -= [expense->total floatValue];
+            query = @"update total set total=? where id=1";
+            [delegate.db executeUpdate:query, [[NSNumber alloc] initWithFloat:total]];
+        }
+        [[self.listData objectAtIndex:sec] removeObjectAtIndex:row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        
+        [tableView reloadData];
+    }
+}
+
+- (void)didSave:(AddExpenseViewController *)controller {
+    
+}
+
+- (void)didCancel:(AddExpenseViewController *)controller {
+    
+}
+
 - (void)updateFromChild {
+    /* Reload the entire table */
+    offset = 0;
+    self.listData = nil;
+    self.listData = [[NSMutableArray alloc] init];
     [self getExpenses];
-    /* IS IT POSSIBLE TO DO THIS?  WILL WE GET A TABLEVIEW BY DOING THIS? */
-    UITableViewController *me = (UITableViewController *)self;
-    [me.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 @end

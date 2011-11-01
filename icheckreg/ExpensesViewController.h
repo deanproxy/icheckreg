@@ -8,20 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "FMDatabase.h"
-#import "CanAddExpense.h"
+#import "AddExpenseViewController.h"
 
-@interface ExpensesViewController : UIViewController <CanAddExpense> {
+@interface ExpensesViewController : UIViewController <AddExpenseViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
     uint totalRows;
     uint offset;
 }
 
 @property (nonatomic, retain) NSMutableArray *listData;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+
+- (void)didCancel:(AddExpenseViewController *)controller;
+- (void)didSave:(AddExpenseViewController *)controller;
 
 @end
 
 @interface Expense : NSObject {
 @public
-    int expenseId;
+    NSNumber *expenseId;
     NSString *note;
     NSNumber *total;
     NSDate *created_at;

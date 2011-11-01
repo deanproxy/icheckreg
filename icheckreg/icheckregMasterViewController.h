@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CanAddExpense.h"
 
 @class icheckregDetailViewController;
 
-@interface icheckregMasterViewController : UITableViewController <CanAddExpense, UITableViewDelegate, UITableViewDataSource> {
+@interface icheckregMasterViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
    
 }
 

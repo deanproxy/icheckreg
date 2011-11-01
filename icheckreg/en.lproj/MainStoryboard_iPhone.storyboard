@@ -228,6 +228,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="ZPh-mL-Czn" id="Mdr-bb-XXG"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="901" y="64"/>
