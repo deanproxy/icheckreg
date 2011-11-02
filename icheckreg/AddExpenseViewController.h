@@ -20,7 +20,7 @@
 @interface AddExpenseViewController : UITableViewController {
     @public
     BOOL isDeposit;
-    uint expenseId;
+    NSNumber *expenseId;
 }
 
 @property (nonatomic, weak) id <AddExpenseViewControllerDelegate> delegate;

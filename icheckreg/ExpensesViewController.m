@@ -6,6 +6,8 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "ExpensesViewController.h"
 #import "icheckregAppDelegate.h"
 #import "FMResultSet.h"
@@ -67,6 +69,35 @@ const uint MAX_PAGE_ROWS = 50;
 - (void)autoLoadExpenses:(UITableView *)tableView {
     [self getExpenses];
     [self.tableView  reloadData];
+}
+
+- (void)removeRow:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
+    Expense *expense = [[self.listData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSString *query = @"delete from expenses where id=?";
+    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [delegate.db executeUpdate:query, expense->expenseId];
+    query = @"select total from total";
+    FMResultSet *result = [delegate.db executeQuery:query];
+    if ([result next]) {
+        float total = [result doubleForColumnIndex:0];
+        total -= [expense->total floatValue];
+        query = @"update total set total=? where id=1";
+        [delegate.db executeUpdate:query, [[NSNumber alloc] initWithFloat:total]];
+    }
+
+	self->totalRows -= 1;
+
+	/* remove the entire object if it's the last row in the section */
+	if ([[self.listData objectAtIndex:indexPath.section] count] <= 1) {
+		NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:indexPath.section];
+		[self.listData removeObjectAtIndex:indexPath.section];
+		[tableView deleteSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+	} else {
+    	[[self.listData objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+	}
+
+    [tableView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -143,7 +174,6 @@ const uint MAX_PAGE_ROWS = 50;
     Expense *expense = [[self.listData objectAtIndex:section] objectAtIndex:0];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM dd, yyyy"];
-    NSLog(@"Header date: %@", [expense->created_at description]);
     return [formatter stringFromDate:expense->created_at];
 }
 
@@ -206,24 +236,7 @@ const uint MAX_PAGE_ROWS = 50;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSInteger sec = [indexPath section];
-        NSInteger row = [indexPath row];
-        Expense *expense = [[self.listData objectAtIndex:sec] objectAtIndex:row];
-        NSString *query = @"delete from expenses where id=?";
-        icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-        [delegate.db executeUpdate:query, expense->expenseId];
-        query = @"select total from total";
-        FMResultSet *result = [delegate.db executeQuery:query];
-        if ([result next]) {
-            float total = [result doubleForColumnIndex:0];
-            total -= [expense->total floatValue];
-            query = @"update total set total=? where id=1";
-            [delegate.db executeUpdate:query, [[NSNumber alloc] initWithFloat:total]];
-        }
-        [[self.listData objectAtIndex:sec] removeObjectAtIndex:row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
-        
-        [tableView reloadData];
+        [self removeRow:tableView atIndexPath:indexPath];
     }
 }
 
