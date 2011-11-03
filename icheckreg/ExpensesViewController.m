@@ -89,10 +89,10 @@ const uint MAX_PAGE_ROWS = 50;
 	if ([[self.listData objectAtIndex:indexPath.section] count] <= 1) {
 		NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:indexPath.section];
 		[self.listData removeObjectAtIndex:indexPath.section];
-		[tableView deleteSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+		[tableView deleteSections:indexSet withRowAnimation:UITableViewRowAnimationLeft];
 	} else {
     	[[self.listData objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
-		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
 	}
 
     [tableView reloadData];

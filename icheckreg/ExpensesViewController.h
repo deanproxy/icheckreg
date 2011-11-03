@@ -10,7 +10,8 @@
 #import "FMDatabase.h"
 #import "AddExpenseViewController.h"
 
-@interface ExpensesViewController : UIViewController <AddExpenseViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
+@interface ExpensesViewController : UIViewController
+		<AddExpenseViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
     uint totalRows;
     uint offset;
 }

@@ -10,7 +10,7 @@
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
-    #import <sqlite3.h>
+    #import "Three20/Three20.h"
     #import <Foundation/Foundation.h>
 
     #define DB_FILE @"checkreg.db"
