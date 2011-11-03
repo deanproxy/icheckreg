@@ -23,13 +23,3 @@
 
 @end
 
-@interface Expense : NSObject {
-@public
-    NSNumber *expenseId;
-    NSString *note;
-    NSNumber *total;
-    NSDate *created_at;
-    BOOL synced;
-}
-
-@end

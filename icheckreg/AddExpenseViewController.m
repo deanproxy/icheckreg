@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "AddExpenseViewController.h"
 #import "icheckregAppDelegate.h"
 
@@ -20,6 +21,31 @@
     if (self->expenseId > 0) {
         
     }
+}
+
+
+/* Strip all characters except for numbers and decimal point */
+- (NSString *)onlyDigits:(NSString *)inputString {
+	NSMutableString *strippedString = [NSMutableString stringWithCapacity:inputString.length];
+
+	NSScanner *scanner = [NSScanner scannerWithString:inputString];
+	NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789."];
+
+	while ([scanner isAtEnd] == NO) {
+		NSString *buffer;
+		if ([scanner scanCharactersFromSet:numbers intoString:&buffer]) {
+			[strippedString appendString:buffer];
+
+		} else {
+			[scanner setScanLocation:([scanner scanLocation] + 1)];
+		}
+	}
+	return strippedString;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+	textField.text = [self onlyDigits:textField.text];
+	return [textField.text length] > 0;
 }
 
 - (IBAction)cancel:(id)sender {

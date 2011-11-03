@@ -145,7 +145,10 @@
                                                     <rect key="frame" x="9" y="6" width="271" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="rQu-84-5os" id="hbe-bh-acr"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -254,6 +257,30 @@
             <point key="canvasLocation" x="455" y="669"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AddExpenseViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddExpenseViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="outlet" name="amount" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="deposit" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ExpensesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExpensesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="icheckregMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/icheckregMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="settings:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

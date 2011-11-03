@@ -9,7 +9,6 @@
 #import "icheckregMasterViewController.h"
 #import "icheckregAppDelegate.h"
 #import "ExpensesViewController.h"
-#import "FMDatabase.h"
 
 @implementation icheckregMasterViewController
 

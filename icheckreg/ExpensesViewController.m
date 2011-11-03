@@ -6,11 +6,9 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import "ExpensesViewController.h"
 #import "icheckregAppDelegate.h"
-#import "FMResultSet.h"
+#import "Expense.h"
 
 @implementation ExpensesViewController
 
@@ -148,24 +146,24 @@ const uint MAX_PAGE_ROWS = 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSUInteger sec = [indexPath section];
-    NSUInteger row = [indexPath row];
-    
-    /* TODO: How do I present this screen? */
-    Expense *expense = [[self.listData objectAtIndex:sec] objectAtIndex:row];
-    AddExpenseViewController *editExpense = [[AddExpenseViewController alloc] init];
-    editExpense.delegate = self;
-    editExpense.description.text = expense->note;
-    editExpense.amount.text = [expense->total stringValue];
-    editExpense->expenseId = expense->expenseId;
-    if ([expense->total floatValue] >= 0.0) {
-        editExpense.deposit.accessoryType = UITableViewCellAccessoryCheckmark;
-        editExpense->isDeposit = YES;
-    } else {
-        editExpense.deposit.accessoryType = UITableViewCellAccessoryNone;
-        editExpense->isDeposit = NO;        
-    }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    NSUInteger sec = [indexPath section];
+//    NSUInteger row = [indexPath row];
+//
+//    /* TODO: How do I present this screen? */
+//    Expense *expense = [[self.listData objectAtIndex:sec] objectAtIndex:row];
+//    AddExpenseViewController *editExpense = [[AddExpenseViewController alloc] init];
+//    editExpense.delegate = self;
+//    editExpense.description.text = expense->note;
+//    editExpense.amount.text = [expense->total stringValue];
+//    editExpense->expenseId = expense->expenseId;
+//    if ([expense->total floatValue] >= 0.0) {
+//        editExpense.deposit.accessoryType = UITableViewCellAccessoryCheckmark;
+//        editExpense->isDeposit = YES;
+//    } else {
+//        editExpense.deposit.accessoryType = UITableViewCellAccessoryNone;
+//        editExpense->isDeposit = NO;
+//    }
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    [self.navigationController presentModalViewController:editExpense animated:YES];
 }
 
@@ -259,8 +257,4 @@ const uint MAX_PAGE_ROWS = 50;
 
 @end
 
-@implementation Expense
-
-
-@end
 

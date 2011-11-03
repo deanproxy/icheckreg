@@ -17,7 +17,7 @@
 
 @end
 
-@interface AddExpenseViewController : UITableViewController {
+@interface AddExpenseViewController : UITableViewController <UITextFieldDelegate> {
     @public
     BOOL isDeposit;
     NSNumber *expenseId;
