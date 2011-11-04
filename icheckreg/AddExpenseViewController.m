@@ -44,8 +44,13 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-	textField.text = [self onlyDigits:textField.text];
-	return [textField.text length] > 0;
+    BOOL valid = YES;
+	if (textField == self.description) {
+        valid = YES;
+    } else if (textField == self.amount) {
+        textField.text = [self onlyDigits:textField.text];
+    }
+	return valid;
 }
 
 - (IBAction)cancel:(id)sender {
@@ -54,6 +59,11 @@
 
 - (IBAction)save:(id)sender {
     float total = 0.0;
+    if ([self.description.text isEqualToString:@""] || [self.amount.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wait a second..." message:@"You must enter a description and an amount to save." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     icheckregAppDelegate *app = [[UIApplication sharedApplication] delegate];
     FMDatabase *db = app.db;
     NSString *totalQuery = @"update total set total = ?";
@@ -76,8 +86,7 @@
     total += expenseAmount;
     [db executeUpdate:totalQuery, [[NSNumber alloc] initWithFloat:total]];
 
-    NSNotificationCenter *notifier = [NSNotificationCenter defaultCenter];
-    [notifier postNotificationName:@"AddExpense" object:nil];
+	[self.delegate didSave:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

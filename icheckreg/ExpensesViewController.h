@@ -19,8 +19,8 @@
 @property (nonatomic, retain) NSMutableArray *listData;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
-- (void)didCancel:(AddExpenseViewController *)controller;
 - (void)didSave:(AddExpenseViewController *)controller;
+- (IBAction)addExpense;
 
 @end
 

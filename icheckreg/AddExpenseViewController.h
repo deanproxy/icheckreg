@@ -12,7 +12,6 @@
 
 @protocol AddExpenseViewControllerDelegate <NSObject>
 
-- (void)didCancel: (AddExpenseViewController *)controller;
 - (void)didSave: (AddExpenseViewController *)controller;
 
 @end

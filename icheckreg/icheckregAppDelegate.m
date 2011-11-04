@@ -18,7 +18,7 @@
 {
     NSURL *dbPath = [self dbFilePath];
     self.db = [[FMDatabase alloc] initWithPath:[dbPath absoluteString]];
-    NSAssert(self.db != nil, @"Could get to database %@", [dbPath absoluteString]);
+    NSAssert(self.db != nil, @"Couldn't get to database %@", [dbPath absoluteString]);
     [self.db open];
     NSString *query = @"create table if not exists expenses (id integer primary key autoincrement, synced boolean not null default false, note varchar(50) not null, total float not null, created_at datetime not null default current_timestamp)";
     [self.db executeUpdate:query];

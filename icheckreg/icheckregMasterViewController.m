@@ -6,9 +6,12 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "icheckregMasterViewController.h"
 #import "icheckregAppDelegate.h"
 #import "ExpensesViewController.h"
+#import "AddExpenseViewController.h"
 
 @implementation icheckregMasterViewController
 
@@ -55,8 +58,6 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     }
-    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-    [notificationCenter addObserver:self selector:@selector(updateFromChild) name:@"AddExpense" object:nil];
 }
 
 - (void)viewDidUnload
@@ -128,12 +129,6 @@
     }
 }
 
-- (void)updateFromChild {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [self updateTotal:cell];
-}
-
 
 /**
  * HOWTO HOOK UP A BUTTON TO AN ACTION -
@@ -145,6 +140,20 @@
 - (IBAction)settings:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Settings Disabled" message:@"There are no settings yet." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"MainAddExpense"]) {
+		UINavigationController *nav = segue.destinationViewController;
+		AddExpenseViewController *add = [[nav viewControllers] objectAtIndex:0];
+		add.delegate = self;
+	}
+}
+
+- (void)didSave: (AddExpenseViewController *)controller {
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	[self updateTotal:cell];
 }
 
 @end

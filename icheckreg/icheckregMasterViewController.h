@@ -7,15 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddExpenseViewController.h"
 
 @class icheckregDetailViewController;
 
-@interface icheckregMasterViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface icheckregMasterViewController : UITableViewController
+		<AddExpenseViewControllerDelegate, UITableViewDelegate, UITableViewDataSource> {
    
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *context;
 
 - (IBAction)settings:(id)sender;
+- (IBAction)addExpense;
+- (void)didSave: (AddExpenseViewController *)controller;
 
 @end

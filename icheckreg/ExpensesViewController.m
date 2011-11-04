@@ -6,8 +6,11 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "ExpensesViewController.h"
 #import "icheckregAppDelegate.h"
+#import "AddExpenseViewController.h"
 #import "Expense.h"
 
 @implementation ExpensesViewController
@@ -113,9 +116,6 @@ const uint MAX_PAGE_ROWS = 50;
     if ([resultSet next]) {
         self->totalRows = [resultSet intForColumnIndex:0];
     }
-    
-    NSNotificationCenter *notifier = [NSNotificationCenter defaultCenter];
-    [notifier addObserver:self selector:@selector(updateFromChild) name:@"AddExpense" object:nil];
 }
 
 - (void)viewDidUnload {
@@ -238,21 +238,28 @@ const uint MAX_PAGE_ROWS = 50;
     }
 }
 
+
+- (IBAction)addExpense {
+	AddExpenseViewController *add = [[AddExpenseViewController alloc] init];
+	add.delegate = self;
+	[self.navigationController presentModalViewController:add animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"ExpenseAddExpense"]) {
+		UINavigationController *nav = segue.destinationViewController;
+		AddExpenseViewController *add = [[nav viewControllers] objectAtIndex:0];
+		add.delegate = self;
+	}
+}
+
 - (void)didSave:(AddExpenseViewController *)controller {
-    
-}
-
-- (void)didCancel:(AddExpenseViewController *)controller {
-    
-}
-
-- (void)updateFromChild {
-    /* Reload the entire table */
-    offset = 0;
-    self.listData = nil;
-    self.listData = [[NSMutableArray alloc] init];
-    [self getExpenses];
-    [self.tableView reloadData];
+	/* Reload list */
+	offset = 0;
+	self.listData = nil;
+	self.listData = [[NSMutableArray alloc] init];
+	[self getExpenses];
+	[self.tableView reloadData];
 }
 
 @end
