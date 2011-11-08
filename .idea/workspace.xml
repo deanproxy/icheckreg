@@ -4,16 +4,11 @@
     <list default="true" id="7e512234-6cf1-461e-b0b9-0d7a2c4b5db1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fmdb" afterPath="$PROJECT_DIR$/fmdb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg.xcodeproj/project.xcworkspace/xcuserdata/dean.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/icheckreg.xcodeproj/project.xcworkspace/xcuserdata/dean.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg.xcodeproj/xcuserdata/dean.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" afterPath="$PROJECT_DIR$/icheckreg.xcodeproj/xcuserdata/dean.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/AddExpenseViewController.h" afterPath="$PROJECT_DIR$/icheckreg/AddExpenseViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/AddExpenseViewController.m" afterPath="$PROJECT_DIR$/icheckreg/AddExpenseViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/ExpensesViewController.h" afterPath="$PROJECT_DIR$/icheckreg/ExpensesViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/Expense.h" afterPath="$PROJECT_DIR$/icheckreg/Expense.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/Expense.m" afterPath="$PROJECT_DIR$/icheckreg/Expense.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/ExpensesViewController.m" afterPath="$PROJECT_DIR$/icheckreg/ExpensesViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/en.lproj/MainStoryboard_iPhone.storyboard" afterPath="$PROJECT_DIR$/icheckreg/en.lproj/MainStoryboard_iPhone.storyboard" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m" afterPath="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/icheckregMasterViewController.h" afterPath="$PROJECT_DIR$/icheckreg/icheckregMasterViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m" afterPath="$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m" />
     </list>
     <ignored path="icheckreg.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,28 +31,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AddExpenseViewController.h" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/icheckreg/AddExpenseViewController.h">
+      <file leaf-file-name="ExpensesViewController.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/icheckreg/ExpensesViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="1" selection-start="270" selection-end="270" vertical-scroll-proportion="0.3721374">
+            <state line="154" column="46" selection-start="5916" selection-end="5925" vertical-scroll-proportion="-9.038462">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="icheckregMasterViewController.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m">
+      <file leaf-file-name="ExpensesViewController.h" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/icheckreg/ExpensesViewController.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="145" column="48" selection-start="4672" selection-end="4672" vertical-scroll-proportion="0.0">
+            <state line="22" column="23" selection-start="615" selection-end="615" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddExpenseViewController.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/icheckreg/AddExpenseViewController.m">
+      <file leaf-file-name="Expense.m" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/icheckreg/Expense.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="28" selection-start="1245" selection-end="1245" vertical-scroll-proportion="0.0">
+            <state line="41" column="126" selection-start="1543" selection-end="1543" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Expense.h" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/icheckreg/Expense.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="46" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="icheckregAppDelegate.m" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="75" selection-start="2494" selection-end="2494" vertical-scroll-proportion="0.18828452">
               <folding />
             </state>
           </provider>
@@ -78,20 +91,20 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/icheckreg/Expense.h" />
         <option value="$PROJECT_DIR$/icheckreg/icheckreg-Prefix.pch" />
-        <option value="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m" />
         <option value="$PROJECT_DIR$/icheckreg/icheckregMasterViewController.h" />
         <option value="$PROJECT_DIR$/icheckreg/ExpensesViewController.h" />
         <option value="$PROJECT_DIR$/icheckreg/AddExpenseViewController.h" />
-        <option value="$PROJECT_DIR$/icheckreg/ExpensesViewController.m" />
         <option value="$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m" />
         <option value="$PROJECT_DIR$/icheckreg/AddExpenseViewController.m" />
+        <option value="$PROJECT_DIR$/icheckreg/Expense.h" />
+        <option value="$PROJECT_DIR$/icheckreg/ExpensesViewController.m" />
+        <option value="$PROJECT_DIR$/icheckreg/Expense.m" />
+        <option value="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="6" />
     <option name="y" value="22" />
     <option name="width" value="1440" />
     <option name="height" value="874" />
@@ -214,7 +227,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Objective-C" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
     <property name="OBJC.PRESERVED_TARGET_SELECTION" value="" />
@@ -222,13 +235,13 @@
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.icheckreg - Debug">
-    <configuration default="false" name="icheckreg - Debug" type="AppleRunConfiguration" factoryName="Application" temporary="true" TARGET_NAME="icheckreg" CONFIG_NAME="Debug" SDK_NAME="iphonesimulator5.0" ARCH_ID="Standard" DEVICE="IPHONE" DEBUGGER="GDB" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <configuration default="false" name="icheckreg - Debug" type="AppleRunConfiguration" factoryName="Application" temporary="true" PROJECT_NAME="icheckreg" TARGET_NAME="icheckreg" CONFIG_NAME="Debug" SDK_NAME="iphonesimulator5.0" ARCH_ID="Standard" DEVICE="IPHONE" DEBUGGER="GDB" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
       <envs />
       <RunnerSettings RunnerId="AppRunner" />
       <ConfigurationWrapper RunnerId="AppRunner" />
       <method />
     </configuration>
-    <configuration default="true" type="AppleRunConfiguration" factoryName="Application" TARGET_NAME="icheckreg" CONFIG_NAME="Debug" SDK_NAME="iphonesimulator5.0" ARCH_ID="Standard" DEVICE="IPHONE" DEBUGGER="GDB" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PROJECT_NAME="icheckreg" TARGET_NAME="icheckreg" CONFIG_NAME="Debug" SDK_NAME="iphonesimulator5.0" ARCH_ID="Standard" DEVICE="IPHONE" DEBUGGER="GDB" PASS_PARENT_ENVS="FALSE" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
       <envs />
       <method>
         <option name="com.jetbrains.cidr.execution.BuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -267,14 +280,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="6" y="22" width="1440" height="874" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="22" width="1440" height="874" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32860824" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32860824" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22724065" sideWeight="0.71391755" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22724065" sideWeight="0.6713917" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32860824" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -341,79 +354,69 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/icheckreg/Expense.m">
+    <entry file="file://$PROJECT_DIR$/icheckreg/icheckreg-Prefix.pch">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="1" selection-start="164" selection-end="164" vertical-scroll-proportion="0.0">
+        <state line="17" column="5" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/icheckregAppDelegate.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/AddExpenseViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="138" column="3" selection-start="4314" selection-end="4314" vertical-scroll-proportion="2.6393442" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/ExpensesViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="23" selection-start="615" selection-end="615" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/AddExpenseViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="22" selection-start="427" selection-end="427" vertical-scroll-proportion="0.30737704">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/icheckreg/Expense.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/icheckreg-Prefix.pch">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="389" selection-end="389" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="39" selection-start="563" selection-end="563" vertical-scroll-proportion="0.36885247">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/icheckregAppDelegate.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="26" column="46" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/icheckreg/icheckregMasterViewController.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="42" selection-start="596" selection-end="596" vertical-scroll-proportion="0.0">
+        <state line="21" column="0" selection-start="515" selection-end="515" vertical-scroll-proportion="0.610998">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/ExpensesViewController.h">
+    <entry file="file://$PROJECT_DIR$/icheckreg/Expense.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="23" selection-start="615" selection-end="615" vertical-scroll-proportion="0.0">
+        <state line="41" column="126" selection-start="1543" selection-end="1543" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/icheckreg/ExpensesViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="8" selection-start="10719" selection-end="10719" vertical-scroll-proportion="0.0">
+        <state line="154" column="46" selection-start="5916" selection-end="5925" vertical-scroll-proportion="-9.038462">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m">
+    <entry file="file://$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="48" selection-start="4672" selection-end="4672" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/AddExpenseViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="28" selection-start="1245" selection-end="1245" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/AddExpenseViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="1" selection-start="270" selection-end="270" vertical-scroll-proportion="0.3721374">
+        <state line="63" column="75" selection-start="2494" selection-end="2494" vertical-scroll-proportion="0.18828452">
           <folding />
         </state>
       </provider>

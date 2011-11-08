@@ -36,28 +36,27 @@ const uint MAX_PAGE_ROWS = 50;
         currentList = [self.listData lastObject];
     }
     while ([resultSet next]) {
-        Expense *expense = [[Expense alloc] init];
-        expense->expenseId = [[NSNumber alloc] initWithInt:[resultSet intForColumn:@"id"]];
-        expense->synced = [resultSet boolForColumn:@"synced"];
+        Expense *expense = [[Expense alloc] initWithDb:db];
+        expense.expenseId = [[NSNumber alloc] initWithInt:[resultSet intForColumn:@"id"]];
+        expense.synced = [resultSet boolForColumn:@"synced"];
         
-        expense->note = [resultSet stringForColumn:@"note"];
-        expense->total = [[NSNumber alloc] initWithFloat:[resultSet doubleForColumn:@"total"]];
+        expense.note = [resultSet stringForColumn:@"note"];
+        expense.total = [[NSNumber alloc] initWithFloat:[resultSet doubleForColumn:@"total"]];
         NSString *dateString = [resultSet stringForColumn:@"created_at"];
-        NSDateFormatter *format = [[NSDateFormatter alloc] init];
-        [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        expense->created_at = [format dateFromString:dateString];
+      	[expense setCreatedAtByString:dateString];
         
+		NSDateFormatter *format = [[NSDateFormatter alloc] init];
         [format setDateFormat:@"yyyy-MM-dd"];
-        NSString *thisDate = [format stringFromDate:expense->created_at];
+        NSString *thisDate = [format stringFromDate:expense.createdAt];
         /* If list has been populated before, try to get the last date */
         if (prevDate == nil && currentList != nil) {
             Expense *last = [currentList objectAtIndex:0];
-            prevDate = [format stringFromDate:last->created_at];
+            prevDate = [format stringFromDate:last.createdAt];
         }
         
         /* if the current date doesn't match the previous date, we're creating a new section */
         if (prevDate == nil || [prevDate compare:thisDate] != NSOrderedSame) {
-            prevDate = [format stringFromDate:expense->created_at];
+            prevDate = [format stringFromDate:expense.createdAt];
             currentList = [[NSMutableArray alloc] init];
             [self.listData addObject:currentList];
         }
@@ -76,12 +75,12 @@ const uint MAX_PAGE_ROWS = 50;
     Expense *expense = [[self.listData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     NSString *query = @"delete from expenses where id=?";
     icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    [delegate.db executeUpdate:query, expense->expenseId];
+    [delegate.db executeUpdate:query, expense.expenseId];
     query = @"select total from total";
     FMResultSet *result = [delegate.db executeQuery:query];
     if ([result next]) {
         float total = [result doubleForColumnIndex:0];
-        total -= [expense->total floatValue];
+        total -= [expense.total floatValue];
         query = @"update total set total=? where id=1";
         [delegate.db executeUpdate:query, [[NSNumber alloc] initWithFloat:total]];
     }
@@ -172,7 +171,7 @@ const uint MAX_PAGE_ROWS = 50;
     Expense *expense = [[self.listData objectAtIndex:section] objectAtIndex:0];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM dd, yyyy"];
-    return [formatter stringFromDate:expense->created_at];
+    return [formatter stringFromDate:expense.createdAt];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -205,13 +204,13 @@ const uint MAX_PAGE_ROWS = 50;
         
         /* We want to enforce the size of the main label, this is a hacky way to do it */
         UILabel *theTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 25)];                        
-        [theTitle setText:expense->note];
+        [theTitle setText:expense.note];
         [theTitle setFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0]];
         [cell.contentView addSubview:theTitle];
         
-        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"$%.02f", [expense->total floatValue]];
+        cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"$%.02f", [expense.total floatValue]];
 
-        if ([expense->total floatValue] > -1) {
+        if ([expense.total floatValue] > -1) {
             /* If the item is a deposit, make it stand out. */
             cell.detailTextLabel.textColor = [[UIColor alloc] initWithRed:0.0 green:153.0/255.0 blue:0.0 alpha:1.0];
         } else {
