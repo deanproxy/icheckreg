@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		05965E66145B67B40009BBAD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 05965E50145B67B30009BBAD /* .gitignore */; };
-		05965E68145B67B40009BBAD /* CONTRIBUTORS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05965E52145B67B30009BBAD /* CONTRIBUTORS.txt */; };
-		05965E6A145B67B40009BBAD /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05965E58145B67B30009BBAD /* LICENSE.txt */; };
-		05965E6B145B67B40009BBAD /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 05965E59145B67B30009BBAD /* README.markdown */; };
-		05965E6C145B67B40009BBAD /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 05965E5C145B67B30009BBAD /* FMDatabase.m */; };
-		05965E6D145B67B40009BBAD /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 05965E5E145B67B30009BBAD /* FMDatabaseAdditions.m */; };
-		05965E6F145B67B40009BBAD /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 05965E61145B67B30009BBAD /* FMResultSet.m */; };
 		05C20AE114537FCE004F3E77 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C20AE014537FCE004F3E77 /* UIKit.framework */; };
 		05C20AE314537FCE004F3E77 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C20AE214537FCE004F3E77 /* Foundation.framework */; };
 		05C20AE514537FCE004F3E77 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05C20AE414537FCE004F3E77 /* CoreGraphics.framework */; };
@@ -35,19 +28,21 @@
 		05E43F1614564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */; };
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
 		5E43F1614564F1500C17EA9 /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EA8 /* Expense.m */; };
+		5E43F1614564F1500C17EAD /* ISDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EAC /* ISDatabase.m */; };
+		5E43F1614564F1500C17EB0 /* ISModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EAF /* ISModel.m */; };
+		5E43F1614564F1500C17EB3 /* CheckregDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EB2 /* CheckregDatabase.m */; };
+		5E43F1614564F1500C17EB6 /* Total.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EB5 /* Total.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		05965E72145B67B40009BBAD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 05965E54145B67B30009BBAD /* fmdb.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 8DD76FA10486AA7600D96B5E;
 			remoteInfo = fmdb;
 		};
 		05965E74145B67B40009BBAD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 05965E54145B67B30009BBAD /* fmdb.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = EE4290EF12B42F870088BD94;
 			remoteInfo = FMDB;
@@ -62,18 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05965E50145B67B30009BBAD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		05965E52145B67B30009BBAD /* CONTRIBUTORS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONTRIBUTORS.txt; sourceTree = "<group>"; };
-		05965E54145B67B30009BBAD /* fmdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = fmdb.xcodeproj; sourceTree = "<group>"; };
-		05965E57145B67B30009BBAD /* fmdb_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmdb_Prefix.pch; sourceTree = "<group>"; };
-		05965E58145B67B30009BBAD /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		05965E59145B67B30009BBAD /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
-		05965E5B145B67B30009BBAD /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		05965E5C145B67B30009BBAD /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		05965E5D145B67B30009BBAD /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		05965E5E145B67B30009BBAD /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		05965E60145B67B30009BBAD /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		05965E61145B67B30009BBAD /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		05C20ADC14537FCE004F3E77 /* icheckreg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icheckreg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05C20AE014537FCE004F3E77 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		05C20AE214537FCE004F3E77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,6 +86,14 @@
 		320AF8492C47A4D819F7C450 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.frameworks; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5E43F1614564F1500C17EA8 /* Expense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expense.m; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EAA /* Expense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expense.h; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EAB /* ISDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISDatabase.h; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EAC /* ISDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISDatabase.m; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EAE /* ISModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISModel.h; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EAF /* ISModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISModel.m; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EB2 /* CheckregDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckregDatabase.m; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EB4 /* CheckregDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckregDatabase.h; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EB5 /* Total.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Total.m; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EB7 /* Total.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Total.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,20 +122,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05965E4F145B67B30009BBAD /* fmdb */ = {
-			isa = PBXGroup;
-			children = (
-				05965E50145B67B30009BBAD /* .gitignore */,
-				05965E52145B67B30009BBAD /* CONTRIBUTORS.txt */,
-				05965E54145B67B30009BBAD /* fmdb.xcodeproj */,
-				05965E57145B67B30009BBAD /* fmdb_Prefix.pch */,
-				05965E58145B67B30009BBAD /* LICENSE.txt */,
-				05965E59145B67B30009BBAD /* README.markdown */,
-				05965E5A145B67B30009BBAD /* src */,
-			);
-			path = fmdb;
-			sourceTree = SOURCE_ROOT;
-		};
 		05965E55145B67B30009BBAD /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,19 +129,6 @@
 				05965E75145B67B40009BBAD /* libFMDB.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		05965E5A145B67B30009BBAD /* src */ = {
-			isa = PBXGroup;
-			children = (
-				05965E5B145B67B30009BBAD /* FMDatabase.h */,
-				05965E5C145B67B30009BBAD /* FMDatabase.m */,
-				05965E5D145B67B30009BBAD /* FMDatabaseAdditions.h */,
-				05965E5E145B67B30009BBAD /* FMDatabaseAdditions.m */,
-				05965E60145B67B30009BBAD /* FMResultSet.h */,
-				05965E61145B67B30009BBAD /* FMResultSet.m */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		05C20AD114537FCE004F3E77 = {
@@ -202,9 +166,12 @@
 		05C20AE614537FCE004F3E77 /* icheckreg */ = {
 			isa = PBXGroup;
 			children = (
+				5E43F1614564F1500C17EB7 /* Total.h */,
+				5E43F1614564F1500C17EB5 /* Total.m */,
+				5E43F1614564F1500C17EB4 /* CheckregDatabase.h */,
+				5E43F1614564F1500C17EB2 /* CheckregDatabase.m */,
 				5E43F1614564F1500C17EAA /* Expense.h */,
 				5E43F1614564F1500C17EA8 /* Expense.m */,
-				05965E4F145B67B30009BBAD /* fmdb */,
 				05C20AEF14537FCE004F3E77 /* icheckregAppDelegate.h */,
 				05C20AF014537FCE004F3E77 /* icheckregAppDelegate.m */,
 				05C20AF214537FCE004F3E77 /* MainStoryboard_iPhone.storyboard */,
@@ -217,6 +184,7 @@
 				05C20B23145484D3004F3E77 /* AddExpenseViewController.h */,
 				05C20B24145484D3004F3E77 /* AddExpenseViewController.m */,
 				05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */,
+				5E43F1614564F1500C17EB1 /* ActiveRecord */,
 			);
 			path = icheckreg;
 			sourceTree = "<group>";
@@ -249,6 +217,17 @@
 				05C20B0D14537FCF004F3E77 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5E43F1614564F1500C17EB1 /* ActiveRecord */ = {
+			isa = PBXGroup;
+			children = (
+				5E43F1614564F1500C17EAF /* ISModel.m */,
+				5E43F1614564F1500C17EAE /* ISModel.h */,
+				5E43F1614564F1500C17EAC /* ISDatabase.m */,
+				5E43F1614564F1500C17EAB /* ISDatabase.h */,
+			);
+			path = ActiveRecord;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,7 +290,6 @@
 			projectReferences = (
 				{
 					ProductGroup = 05965E55145B67B30009BBAD /* Products */;
-					ProjectRef = 05965E54145B67B30009BBAD /* fmdb.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -347,10 +325,6 @@
 				05C20AEB14537FCE004F3E77 /* InfoPlist.strings in Resources */,
 				05C20AF414537FCE004F3E77 /* MainStoryboard_iPhone.storyboard in Resources */,
 				05C20AF714537FCE004F3E77 /* MainStoryboard_iPad.storyboard in Resources */,
-				05965E66145B67B40009BBAD /* .gitignore in Resources */,
-				05965E68145B67B40009BBAD /* CONTRIBUTORS.txt in Resources */,
-				05965E6A145B67B40009BBAD /* LICENSE.txt in Resources */,
-				05965E6B145B67B40009BBAD /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,10 +365,11 @@
 				05C20B1D14538975004F3E77 /* ExpensesViewController.m in Sources */,
 				05C20B25145484D3004F3E77 /* AddExpenseViewController.m in Sources */,
 				05E43F1514564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */,
-				05965E6C145B67B40009BBAD /* FMDatabase.m in Sources */,
-				05965E6D145B67B40009BBAD /* FMDatabaseAdditions.m in Sources */,
-				05965E6F145B67B40009BBAD /* FMResultSet.m in Sources */,
 				5E43F1614564F1500C17EA9 /* Expense.m in Sources */,
+				5E43F1614564F1500C17EAD /* ISDatabase.m in Sources */,
+				5E43F1614564F1500C17EB0 /* ISModel.m in Sources */,
+				5E43F1614564F1500C17EB3 /* CheckregDatabase.m in Sources */,
+				5E43F1614564F1500C17EB6 /* Total.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

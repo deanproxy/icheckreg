@@ -7,31 +7,31 @@
 //
 
 #import "icheckregAppDelegate.h"
-#import "FMDatabase.h"
 #import "Expense.h"
+#import "Total.h"
+#import "CheckregDatabase.h"
 
 @implementation icheckregAppDelegate
 
 @synthesize window = _window;
 @synthesize db = _db;
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSURL *dbPath = [self dbFilePath];
-    self.db = [[FMDatabase alloc] initWithPath:[dbPath absoluteString]];
-    NSAssert(self.db != nil, @"Couldn't get to database %@", [dbPath absoluteString]);
-    [self.db open];
+	self.db = [[CheckregDatabase alloc] initWithFilename:[dbPath absoluteString]];
     NSString *query = @"create table if not exists expenses (id integer primary key autoincrement, synced boolean not null default false, note varchar(50) not null, total float not null, created_at datetime not null default current_timestamp)";
-    [self.db executeUpdate:query];
+    [self.db executeSql:query];
 
     query = @"create table if not exists total (id integer primary key autoincrement, total float not null)";
-    [self.db executeUpdate:query];
+    [self.db executeSql:query];
 
     return YES;
 }
 
 - (void)dealloc {
-    [self.db close];
+    self.db = nil;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -65,17 +65,15 @@
 */
 - (void)backgroundTaskToSyncData {
 	NSString *query = @"select id,note,total,created_at from expenses where synced='false'";
-	FMResultSet *results = [self.db executeQuery:query];
+	NSArray *expenses = [Expense findByColumn:@"synced" value:@"false"];
 	NSMutableArray *array = [[NSMutableArray alloc] init];
 	NSMutableString *ids = [[NSMutableString alloc] init];
 
-	while ([results next]) {
-		NSString *note = [results stringForColumnIndex:1];
-		NSString *total = [NSString stringWithFormat:@"%f", [results doubleForColumnIndex:2]];
-		NSString *date = [results stringForColumnIndex:3];
-		NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:note, @"note", total, @"total", date, @"created_at", nil];
+	for (Expense *expense in expenses) {
+		NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:expense.note, @"note", expense.total,
+						@"total", expense.created_at, @"created_at", nil];
 		[array addObject:[dict copy]];
-		[ids appendFormat:@"%d,", [results intForColumnIndex:0]];
+		[ids appendFormat:@"%d,", expense.primaryKey];
 	}
 
 	NSError *error = nil;
@@ -97,19 +95,22 @@
 	if (responseData) {
 		id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
 		/* Should be an array */
-		FMResultSet *totalResult = [self.db executeQuery:@"select total from total"];
-		if ([totalResult next]) {
-			total = [totalResult doubleForColumnIndex:0];
-		}
+		Total *totalObj = [Total find:0];
+		total = [totalObj.total floatValue];
 		if ([jsonObject respondsToSelector:@selector(objectAtIndex:)]) {
 			for (int i=0; i < [jsonObject length]; i++) {
 				NSDictionary *dict = [jsonObject objectAtIndex:i];
-				Expense *expense = [[Expense alloc] initWithDict:dict andDbConnection:self.db];
+				Expense *expense = [[Expense alloc] init];
+				expense.total = [dict objectForKey:@"total"];
+				expense.note = [dict objectForKey:@"note"];
+				expense.synced = YES;
+				[expense setCreatedAtByString:[dict objectForKey:@"created_at"]];
 				[expense save];
 				total += [expense.total floatValue];
 			}
 		}
-		[self.db executeUpdate:@"update total set total=?", [[NSNumber alloc] initWithFloat:total]];
+		totalObj.total = [[NSNumber alloc] initWithFloat:total];
+		[totalObj save];
 	}
 }
 

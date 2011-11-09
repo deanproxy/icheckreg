@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FMDatabase.h"
+#import "CheckregDatabase.h
 
 @interface icheckregAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) FMDatabase *db;
+@property (nonatomic, assign) CheckregDatabase *db;
 
 - (NSURL *)applicationDocumentsDirectory;
 - (NSURL *)dbFilePath;
