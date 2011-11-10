@@ -14,7 +14,7 @@
 
 @property (nonatomic, retain) NSString *note;
 @property (nonatomic, retain) NSNumber *total;
-@property (nonatomic, retain) NSDate *created_at;
+@property (nonatomic, retain) NSNumber *createdAt;
 @property (nonatomic) Boolean synced;
 
 - (void)setCreatedAtByString:(NSString *)date;

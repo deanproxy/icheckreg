@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e512234-6cf1-461e-b0b9-0d7a2c4b5db1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.m" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/icheckreg/ActiveRecord/ISDatabase.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/icheckreg/ActiveRecord/ISDatabase.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/icheckreg/ActiveRecord/ISModel.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/icheckreg/ActiveRecord/ISModel.m" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/icheckreg.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/AddExpenseViewController.m" afterPath="$PROJECT_DIR$/icheckreg/AddExpenseViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/CheckregDatabase.m" afterPath="$PROJECT_DIR$/icheckreg/CheckregDatabase.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.h" afterPath="$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.m" afterPath="$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/Expense.h" afterPath="$PROJECT_DIR$/icheckreg/Expense.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/Expense.m" afterPath="$PROJECT_DIR$/icheckreg/Expense.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/ExpensesViewController.h" afterPath="$PROJECT_DIR$/icheckreg/ExpensesViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/ExpensesViewController.m" afterPath="$PROJECT_DIR$/icheckreg/ExpensesViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/Total.h" afterPath="$PROJECT_DIR$/icheckreg/Total.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.h" afterPath="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m" afterPath="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m" afterPath="$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m" />
     </list>
     <ignored path="icheckreg.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,28 +30,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ActiveRecord.h" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ActiveRecord.h" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="21" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FMResultSet.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMResultSet.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="16" selection-start="2847" selection-end="2847" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Total.h" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/icheckreg/Total.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="32" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
+            <state line="18" column="43" selection-start="348" selection-end="348" vertical-scroll-proportion="0.54989815">
               <folding />
             </state>
           </provider>
@@ -72,7 +42,7 @@
       <file leaf-file-name="icheckregMasterViewController.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="0" selection-start="3037" selection-end="3037" vertical-scroll-proportion="0.0">
+            <state line="102" column="115" selection-start="2811" selection-end="2811" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -81,7 +51,16 @@
       <file leaf-file-name="icheckregAppDelegate.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="33" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
+            <state line="38" column="20" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Expense.h" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/icheckreg/Expense.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="40" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -90,25 +69,16 @@
       <file leaf-file-name="Expense.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/icheckreg/Expense.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="50" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0">
+            <state line="19" column="23" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FMDatabase.m" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMDatabase.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="515" column="0" selection-start="14585" selection-end="14585" vertical-scroll-proportion="-5.769231">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActiveRecord.m" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ActiveRecord.m" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="2" selection-start="466" selection-end="466" vertical-scroll-proportion="-0.83299387">
+            <state line="109" column="29" selection-start="2953" selection-end="2953" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -142,18 +112,18 @@
         <option value="$PROJECT_DIR$/icheckreg/CheckregDatabase.m" />
         <option value="$PROJECT_DIR$/icheckreg/ActiveRecord/ISModel.m" />
         <option value="$PROJECT_DIR$/icheckreg/ActiveRecord/ISDatabase.m" />
-        <option value="$PROJECT_DIR$/icheckreg/Expense.h" />
-        <option value="$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.h" />
-        <option value="$PROJECT_DIR$/icheckreg/Expense.m" />
         <option value="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.h" />
         <option value="$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMDatabase.m" />
         <option value="$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMResultSet.m" />
         <option value="$PROJECT_DIR$/icheckreg/Total.h" />
         <option value="$PROJECT_DIR$/icheckreg/AddExpenseViewController.m" />
         <option value="$PROJECT_DIR$/icheckreg/ExpensesViewController.m" />
-        <option value="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m" />
         <option value="$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m" />
+        <option value="$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m" />
+        <option value="$PROJECT_DIR$/icheckreg/Expense.h" />
+        <option value="$PROJECT_DIR$/icheckreg/Expense.m" />
         <option value="$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.m" />
+        <option value="$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.h" />
       </list>
     </option>
   </component>
@@ -421,7 +391,7 @@
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="starting to add in active record support" />
+    <option name="LAST_COMMIT_MESSAGE" value="rewrote activerecord myself" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -437,6 +407,7 @@
     <MESSAGE value="fixed pagination" />
     <MESSAGE value="adding background processing of json. Also added helper methods to Expense class to allow creating/updating an expense." />
     <MESSAGE value="starting to add in active record support" />
+    <MESSAGE value="rewrote activerecord myself" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -449,44 +420,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMResultSet.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/Expense.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="561" selection-end="561" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/Expense.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="50" selection-start="745" selection-end="745" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/icheckreg/icheckregAppDelegate.h">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="22" selection-start="199" selection-end="199" vertical-scroll-proportion="0.27494907">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMResultSet.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="16" selection-start="2847" selection-end="2847" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/Total.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="32" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -505,37 +441,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.h">
+    <entry file="file://$PROJECT_DIR$/icheckreg/Total.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="21" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="33" selection-start="630" selection-end="630" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMDatabase.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="515" column="0" selection-start="14585" selection-end="14585" vertical-scroll-proportion="-5.769231">
+        <state line="11" column="32" selection-start="205" selection-end="205" vertical-scroll-proportion="0.33604887">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/icheckreg/icheckregMasterViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="3037" selection-end="3037" vertical-scroll-proportion="0.0">
+        <state line="102" column="115" selection-start="2811" selection-end="2811" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMDatabase.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="206" column="84" selection-start="4876" selection-end="4880" vertical-scroll-proportion="8.076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/icheckregAppDelegate.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="20" selection-start="1163" selection-end="1163" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMResultSet.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="16" selection-start="2847" selection-end="2847" vertical-scroll-proportion="3.1466396">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/fmdb/FMResultSet.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.8940936">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/Expense.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="40" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/Expense.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="23" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="2" selection-start="466" selection-end="466" vertical-scroll-proportion="-0.83299387">
+        <state line="109" column="29" selection-start="2953" selection-end="2953" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/icheckreg/ActiveRecord/ActiveRecord.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="43" selection-start="348" selection-end="348" vertical-scroll-proportion="0.54989815">
           <folding />
         </state>
       </provider>

@@ -11,8 +11,12 @@
 
 @synthesize total = _total;
 @synthesize note = _note;
-@synthesize created_at = _created_at;
+@synthesize createdAt = _createdAt;
 @synthesize synced = _synced;
+
+- (NSDate *)get_createdAt {
+	return [NSDate dateWithTimeIntervalSince1970:[_createdAt longValue]];
+}
 
 - (void)setCreatedAtByString:(NSString *)date {
 	[self setCreatedAtByString:date withFormat:DB_DATE_FORMAT];

@@ -36,6 +36,7 @@
 }
 
 - (void)dealloc {
+	[self.db close];
     self.db = nil;
 }
 							

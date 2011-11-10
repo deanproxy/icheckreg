@@ -15,6 +15,8 @@
 @property NSUInteger primaryKey;
 
 + (void)setDatabase:(FMDatabase *)db;
++ (NSUInteger)count;
++ (NSUInteger)count:(NSString *)where, ...;
 + (NSArray *)findWhere:(NSString *)where, ...;
 + (NSArray *)findWithSql:(NSString *)sql, ...;
 + (id)findById:(NSUInteger)primaryKey;

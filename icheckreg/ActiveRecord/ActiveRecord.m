@@ -65,6 +65,10 @@ static NSMutableArray *propertyNames = nil;
 	return [self resultsToArrayOfClass:results];
 }
 
+/*
+ * Get records with a where clause.
+ * Example: [Whatever findWhere:@"something = ?", @"yourmom"]
+ */
 + (NSArray *)findWhere:(NSString *)where, ... {
 	va_list args;
 	va_start(args, where);
@@ -74,6 +78,9 @@ static NSMutableArray *propertyNames = nil;
 	return [self resultsToArrayOfClass:results];
 }
 
+/*
+ * Get a single record by it's primary key id.
+ */
 + (id)findById:(NSUInteger)primaryKey {
 	NSString *query = [[NSString alloc] initWithFormat:@"select * from %@ where primaryKey=?", [self class]];
 	NSArray *result = [self findWithSql:query, [NSNumber numberWithInt:primaryKey]];
@@ -82,6 +89,23 @@ static NSMutableArray *propertyNames = nil;
 		row = [result objectAtIndex:0];
 	}
 	return row;
+}
+
++ (NSUInteger)count:(NSString *)where, ... {
+	NSUInteger count = 0;
+	NSString *query = [[NSString alloc] initWithFormat:@"select count(1) from %@ where %@", [self class], where];
+	va_list args;
+	va_start(args, where);
+	FMResultSet *result = [database executeQuery:query withArgumentsInArray:nil orVAList:args];
+	va_end(args);
+	if ([result next]) {
+		count = [result intForColumnIndex:0];		
+	}
+	return count;
+}
+
++ (NSUInteger)count {
+	return [self count:@"1=1"];
 }
 
 - (void)save {
