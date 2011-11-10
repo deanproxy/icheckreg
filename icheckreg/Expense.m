@@ -14,6 +14,7 @@
 @synthesize createdAt = _createdAt;
 @synthesize synced = _synced;
 
+/* TODO: Figure you how to translate createdAt back and forth to an NSDate from the DB (which will be an INTEGER) */
 - (NSDate *)get_createdAt {
 	return [NSDate dateWithTimeIntervalSince1970:[_createdAt longValue]];
 }
@@ -26,11 +27,6 @@
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateFormat:format];
 	self.created_at = [formatter dateFromString:date];
-}
-
-- (NSUInteger)count {
-	NSString *query = @"select count(1) from Expense";
-	NSArray *result = [Expense findWithSql:query];
 }
 
 @end
