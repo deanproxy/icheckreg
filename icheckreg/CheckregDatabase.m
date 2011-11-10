@@ -13,6 +13,7 @@
 - (id)initWithFilename:(NSString *)filename {
 	if (self = [super initWithFileName:filename]) {
 		[ISModel setDatabase:self];
+		self.logging = YES;
 	}
 	return self;
 }

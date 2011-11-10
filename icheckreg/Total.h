@@ -6,10 +6,10 @@
 
 
 #import <Foundation/Foundation.h>
-#import "ISModel.h"
+#import "ActiveRecord.h"
 
 
-@interface Total : ISModel
+@interface Total : ActiveRecord
 
 @property (nonatomic, retain) NSNumber *total;
 

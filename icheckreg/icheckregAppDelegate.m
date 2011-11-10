@@ -9,7 +9,7 @@
 #import "icheckregAppDelegate.h"
 #import "Expense.h"
 #import "Total.h"
-#import "CheckregDatabase.h"
+#import "FMDatabase.h"
 
 @implementation icheckregAppDelegate
 
@@ -19,13 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	/* Set up ActiveRecord */
     NSURL *dbPath = [self dbFilePath];
-	self.db = [[CheckregDatabase alloc] initWithFilename:[dbPath absoluteString]];
-    NSString *query = @"create table if not exists expenses (id integer primary key autoincrement, synced boolean not null default false, note varchar(50) not null, total float not null, created_at datetime not null default current_timestamp)";
-    [self.db executeSql:query];
+	self.db = [FMDatabase databaseWithPath:[dbPath absoluteString]];
+	[self.db open];
+	self.db.traceExecution = YES;
+	[ActiveRecord setDatabase:self.db];
 
-    query = @"create table if not exists total (id integer primary key autoincrement, total float not null)";
-    [self.db executeSql:query];
+    NSString *query = @"create table if not exists Expense (primaryKey integer primary key autoincrement, synced boolean not null default false, note varchar(50) not null, total float not null, created_at datetime not null default current_timestamp)";
+    [self.db executeQuery:query];
+
+    query = @"create table if not exists Total (primaryKey integer primary key autoincrement, total float not null)";
+    [self.db executeQuery:query];
 
     return YES;
 }
@@ -65,7 +70,7 @@
 */
 - (void)backgroundTaskToSyncData {
 	NSString *query = @"select id,note,total,created_at from expenses where synced='false'";
-	NSArray *expenses = [Expense findByColumn:@"synced" value:@"false"];
+	NSArray *expenses = nil; // [Expense findByColumn:@"synced" value:@"false"];
 	NSMutableArray *array = [[NSMutableArray alloc] init];
 	NSMutableString *ids = [[NSMutableString alloc] init];
 
@@ -95,7 +100,7 @@
 	if (responseData) {
 		id jsonObject = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&error];
 		/* Should be an array */
-		Total *totalObj = [Total find:0];
+		Total *totalObj = [Total findById:0];
 		total = [totalObj.total floatValue];
 		if ([jsonObject respondsToSelector:@selector(objectAtIndex:)]) {
 			for (int i=0; i < [jsonObject length]; i++) {
@@ -123,7 +128,7 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-	[self syncData];
+//	[self syncData];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

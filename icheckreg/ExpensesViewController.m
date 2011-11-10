@@ -6,12 +6,11 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import "ExpensesViewController.h"
 #import "icheckregAppDelegate.h"
 #import "AddExpenseViewController.h"
 #import "Expense.h"
+#import "Total.h"
 
 @implementation ExpensesViewController
 
@@ -25,38 +24,29 @@ const uint MAX_PAGE_ROWS = 50;
     NSMutableArray *currentList = nil;
     NSString *prevDate = nil;
     icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    FMDatabase *db = delegate.db;
     
-    NSString *query = [[NSString alloc] initWithFormat:@"select id,synced,note,total,created_at from expenses order by created_at desc limit %d,%d", offset, MAX_PAGE_ROWS];
+    NSString *query = [[NSString alloc] initWithFormat:@"select primaryKey,synced,note,total,created_at from Expense order by created_at desc limit %d,%d", offset, MAX_PAGE_ROWS];
     NSLog(@"%@", query);
-    FMResultSet *resultSet = [db executeQuery:query];
     
     /* If list is already populated, get the last object */
     if ([self.listData count] > 0) {
         currentList = [self.listData lastObject];
     }
-    while ([resultSet next]) {
-        Expense *expense = [[Expense alloc] initWithDb:db];
-        expense.expenseId = [[NSNumber alloc] initWithInt:[resultSet intForColumn:@"id"]];
-        expense.synced = [resultSet boolForColumn:@"synced"];
-        
-        expense.note = [resultSet stringForColumn:@"note"];
-        expense.total = [[NSNumber alloc] initWithFloat:[resultSet doubleForColumn:@"total"]];
-        NSString *dateString = [resultSet stringForColumn:@"created_at"];
-      	[expense setCreatedAtByString:dateString];
-        
+	
+	NSArray *expenses = [Expense findWithSql:query];
+	for (Expense *expense in expenses) {
 		NSDateFormatter *format = [[NSDateFormatter alloc] init];
         [format setDateFormat:@"yyyy-MM-dd"];
-        NSString *thisDate = [format stringFromDate:expense.createdAt];
+        NSString *thisDate = [format stringFromDate:expense.created_at];
         /* If list has been populated before, try to get the last date */
         if (prevDate == nil && currentList != nil) {
             Expense *last = [currentList objectAtIndex:0];
-            prevDate = [format stringFromDate:last.createdAt];
+            prevDate = [format stringFromDate:last.created_at];
         }
         
         /* if the current date doesn't match the previous date, we're creating a new section */
         if (prevDate == nil || [prevDate compare:thisDate] != NSOrderedSame) {
-            prevDate = [format stringFromDate:expense.createdAt];
+            prevDate = [format stringFromDate:expense.created_at];
             currentList = [[NSMutableArray alloc] init];
             [self.listData addObject:currentList];
         }
@@ -73,18 +63,13 @@ const uint MAX_PAGE_ROWS = 50;
 
 - (void)removeRow:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath {
     Expense *expense = [[self.listData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    NSString *query = @"delete from expenses where id=?";
-    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    [delegate.db executeUpdate:query, expense.expenseId];
-    query = @"select total from total";
-    FMResultSet *result = [delegate.db executeQuery:query];
-    if ([result next]) {
-        float total = [result doubleForColumnIndex:0];
-        total -= [expense.total floatValue];
-        query = @"update total set total=? where id=1";
-        [delegate.db executeUpdate:query, [[NSNumber alloc] initWithFloat:total]];
-    }
+    Total *totalObj = [Total findById:0];
 
+	[expense delete];
+	float total = [totalObj.total floatValue];
+	total -= [expense.total floatValue];
+	totalObj.total = [NSNumber numberWithFloat:total];
+    [totalObj save];
 	self->totalRows -= 1;
 
 	/* remove the entire object if it's the last row in the section */
@@ -111,10 +96,8 @@ const uint MAX_PAGE_ROWS = 50;
     
     /* Get total rows available */
     NSString *query = @"select count(1) from expenses";
-    FMResultSet *resultSet = [delegate.db executeQuery:query];
-    if ([resultSet next]) {
-        self->totalRows = [resultSet intForColumnIndex:0];
-    }
+
+	self->totalRows = 0;
 }
 
 - (void)viewDidUnload {
@@ -171,7 +154,7 @@ const uint MAX_PAGE_ROWS = 50;
     Expense *expense = [[self.listData objectAtIndex:section] objectAtIndex:0];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM dd, yyyy"];
-    return [formatter stringFromDate:expense.createdAt];
+    return [formatter stringFromDate:expense.created_at];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

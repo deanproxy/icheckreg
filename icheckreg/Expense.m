@@ -21,7 +21,12 @@
 - (void)setCreatedAtByString:(NSString *)date withFormat:(NSString *)format {
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateFormat:format];
-	self.createdAt = [formatter dateFromString:date];
+	self.created_at = [formatter dateFromString:date];
+}
+
+- (NSUInteger)count {
+	NSString *query = @"select count(1) from Expense";
+	NSArray *result = [Expense findWithSql:query];
 }
 
 @end

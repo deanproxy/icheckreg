@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AddExpenseViewController.h"
 #import "icheckregAppDelegate.h"
+#import "Total.h"
+#import "Expense.h"
 
 @implementation AddExpenseViewController
 
@@ -64,27 +66,21 @@
         [alert show];
         return;
     }
-    icheckregAppDelegate *app = [[UIApplication sharedApplication] delegate];
-    FMDatabase *db = app.db;
-    NSString *totalQuery = @"update total set total = ?";
-    FMResultSet *result = [db executeQuery:@"select total from total"]; 
-    if ([result next]) {
-        total = [result doubleForColumnIndex:0];
-    } else {
-        /* If we couldn't get anything from the total DB, we should insert */
-        totalQuery = @"insert into total (total) values(?)";
-    }
+
     float expenseAmount = amount.text.floatValue;
     if (!self->isDeposit) {
         expenseAmount = -expenseAmount;
     }
-    NSString *query = @"insert into expenses (note, total) values (?, ?)";
-    if (self->expenseId) {
-        query = @"update expense set note=?, total=?";
-    }
-    [db executeUpdate:query, self.description.text, [[NSNumber alloc] initWithFloat:expenseAmount]];
+	Expense *expense = [[Expense alloc] init];
+	expense.note = self.description.text;
+	expense.total = [NSNumber numberWithFloat:expenseAmount];
+	expense.created_at = [[NSDate alloc] init];
+	[expense save];
+
     total += expenseAmount;
-    [db executeUpdate:totalQuery, [[NSNumber alloc] initWithFloat:total]];
+	Total *totalObj = [Total findById:0];
+	totalObj.total = [NSNumber numberWithFloat:total];
+	[totalObj save];
 
 	[self.delegate didSave:nil];
     [self dismissViewControllerAnimated:YES completion:nil];

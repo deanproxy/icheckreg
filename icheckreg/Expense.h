@@ -6,11 +6,11 @@
 
 
 #import <Foundation/Foundation.h>
-#import "ISModel.h"
+#import "ActiveRecord.h"
 
 #define DB_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
 
-@interface Expense : ISModel
+@interface Expense : ActiveRecord
 
 @property (nonatomic, retain) NSString *note;
 @property (nonatomic, retain) NSNumber *total;
@@ -19,6 +19,5 @@
 
 - (void)setCreatedAtByString:(NSString *)date;
 - (void)setCreatedAtByString:(NSString *)date withFormat:(NSString *)format;
-
 
 @end

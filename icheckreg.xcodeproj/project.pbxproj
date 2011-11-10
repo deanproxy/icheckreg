@@ -28,10 +28,11 @@
 		05E43F1614564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */; };
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
 		5E43F1614564F1500C17EA9 /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EA8 /* Expense.m */; };
-		5E43F1614564F1500C17EAD /* ISDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EAC /* ISDatabase.m */; };
-		5E43F1614564F1500C17EB0 /* ISModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EAF /* ISModel.m */; };
 		5E43F1614564F1500C17EB3 /* CheckregDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EB2 /* CheckregDatabase.m */; };
 		5E43F1614564F1500C17EB6 /* Total.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EB5 /* Total.m */; };
+		5E43F1614564F1500C17EB9 /* ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EB8 /* ActiveRecord.m */; };
+		5E43F1614564F1500C17EBE /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EBD /* FMDatabase.m */; };
+		5E43F1614564F1500C17EC4 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EC3 /* FMResultSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,14 +87,16 @@
 		320AF8492C47A4D819F7C450 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.frameworks; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5E43F1614564F1500C17EA8 /* Expense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expense.m; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EAA /* Expense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expense.h; sourceTree = "<group>"; };
-		5E43F1614564F1500C17EAB /* ISDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISDatabase.h; sourceTree = "<group>"; };
-		5E43F1614564F1500C17EAC /* ISDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISDatabase.m; sourceTree = "<group>"; };
-		5E43F1614564F1500C17EAE /* ISModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISModel.h; sourceTree = "<group>"; };
-		5E43F1614564F1500C17EAF /* ISModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISModel.m; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EB2 /* CheckregDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckregDatabase.m; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EB4 /* CheckregDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckregDatabase.h; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EB5 /* Total.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Total.m; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EB7 /* Total.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Total.h; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EB8 /* ActiveRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveRecord.m; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EBA /* ActiveRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveRecord.h; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EBC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EBD /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EC2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		5E43F1614564F1500C17EC3 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,12 +225,22 @@
 		5E43F1614564F1500C17EB1 /* ActiveRecord */ = {
 			isa = PBXGroup;
 			children = (
-				5E43F1614564F1500C17EAF /* ISModel.m */,
-				5E43F1614564F1500C17EAE /* ISModel.h */,
-				5E43F1614564F1500C17EAC /* ISDatabase.m */,
-				5E43F1614564F1500C17EAB /* ISDatabase.h */,
+				5E43F1614564F1500C17EBA /* ActiveRecord.h */,
+				5E43F1614564F1500C17EB8 /* ActiveRecord.m */,
+				5E43F1614564F1500C17EBB /* fmdb */,
 			);
 			path = ActiveRecord;
+			sourceTree = "<group>";
+		};
+		5E43F1614564F1500C17EBB /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				5E43F1614564F1500C17EC3 /* FMResultSet.m */,
+				5E43F1614564F1500C17EC2 /* FMResultSet.h */,
+				5E43F1614564F1500C17EBD /* FMDatabase.m */,
+				5E43F1614564F1500C17EBC /* FMDatabase.h */,
+			);
+			path = fmdb;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,10 +379,11 @@
 				05C20B25145484D3004F3E77 /* AddExpenseViewController.m in Sources */,
 				05E43F1514564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */,
 				5E43F1614564F1500C17EA9 /* Expense.m in Sources */,
-				5E43F1614564F1500C17EAD /* ISDatabase.m in Sources */,
-				5E43F1614564F1500C17EB0 /* ISModel.m in Sources */,
 				5E43F1614564F1500C17EB3 /* CheckregDatabase.m in Sources */,
 				5E43F1614564F1500C17EB6 /* Total.m in Sources */,
+				5E43F1614564F1500C17EB9 /* ActiveRecord.m in Sources */,
+				5E43F1614564F1500C17EBE /* FMDatabase.m in Sources */,
+				5E43F1614564F1500C17EC4 /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

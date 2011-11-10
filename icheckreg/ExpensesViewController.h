@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FMDatabase.h"
 #import "AddExpenseViewController.h"
 
 @interface ExpensesViewController : UIViewController

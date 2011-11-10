@@ -6,31 +6,22 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import "icheckregMasterViewController.h"
-#import "icheckregAppDelegate.h"
 #import "ExpensesViewController.h"
 #import "AddExpenseViewController.h"
+#import "Total.h"
 
 @implementation icheckregMasterViewController
 
 @synthesize context = _context;
 
 - (NSNumber *)getTotal {
-    NSNumber *total = nil;
-    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    FMDatabase *db = delegate.db;
-    NSString *query = @"select total from total";
-    FMResultSet *result = [db executeQuery:query];
-    if ([result next]) {
-        float totalFromDb = [result doubleForColumnIndex:0];
-        total = [[NSNumber alloc] initWithFloat:totalFromDb];
-    } else {
-        NSLog(@"Couldn't get total from total table.");
-        total = [[NSNumber alloc] initWithFloat:0.0];
-    }
-    return total;
+    Total *total = [Total findById:1];
+	if (!total) {
+		total = [[Total alloc] init];
+		total.total = [NSNumber numberWithFloat:0.0];
+	}
+    return total.total;
 }
 
 - (void)awakeFromNib
