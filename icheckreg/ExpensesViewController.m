@@ -23,9 +23,8 @@ const uint MAX_PAGE_ROWS = 50;
 - (void)getExpenses {
     NSMutableArray *currentList = nil;
     NSString *prevDate = nil;
-    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
-    NSString *query = [[NSString alloc] initWithFormat:@"select primaryKey,synced,note,total,created_at from Expense order by created_at desc limit %d,%d", offset, MAX_PAGE_ROWS];
+    NSString *query = [[NSString alloc] initWithFormat:@"select primaryKey,synced,note,total,createdAt from Expense order by createdAt desc limit %d,%d", offset, MAX_PAGE_ROWS];
     NSLog(@"%@", query);
     
     /* If list is already populated, get the last object */
@@ -37,16 +36,16 @@ const uint MAX_PAGE_ROWS = 50;
 	for (Expense *expense in expenses) {
 		NSDateFormatter *format = [[NSDateFormatter alloc] init];
         [format setDateFormat:@"yyyy-MM-dd"];
-        NSString *thisDate = [format stringFromDate:expense.created_at];
+        NSString *thisDate = [format stringFromDate:expense.createdAt];
         /* If list has been populated before, try to get the last date */
         if (prevDate == nil && currentList != nil) {
             Expense *last = [currentList objectAtIndex:0];
-            prevDate = [format stringFromDate:last.created_at];
+            prevDate = [format stringFromDate:last.createdAt];
         }
         
         /* if the current date doesn't match the previous date, we're creating a new section */
         if (prevDate == nil || [prevDate compare:thisDate] != NSOrderedSame) {
-            prevDate = [format stringFromDate:expense.created_at];
+            prevDate = [format stringFromDate:expense.createdAt];
             currentList = [[NSMutableArray alloc] init];
             [self.listData addObject:currentList];
         }
@@ -90,14 +89,10 @@ const uint MAX_PAGE_ROWS = 50;
     
     offset = 0;
     _listData = [[NSMutableArray alloc] init];
-    icheckregAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
     [self getExpenses];
     
-    /* Get total rows available */
-    NSString *query = @"select count(1) from expenses";
-
-	self->totalRows = 0;
+	self->totalRows = [Expense count];
 }
 
 - (void)viewDidUnload {
@@ -154,7 +149,7 @@ const uint MAX_PAGE_ROWS = 50;
     Expense *expense = [[self.listData objectAtIndex:section] objectAtIndex:0];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM dd, yyyy"];
-    return [formatter stringFromDate:expense.created_at];
+    return [formatter stringFromDate:expense.createdAt];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

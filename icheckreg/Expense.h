@@ -8,13 +8,11 @@
 #import <Foundation/Foundation.h>
 #import "ActiveRecord.h"
 
-#define DB_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
-
 @interface Expense : ActiveRecord
 
 @property (nonatomic, retain) NSString *note;
 @property (nonatomic, retain) NSNumber *total;
-@property (nonatomic, retain) NSNumber *createdAt;
+@property (nonatomic, retain) NSDate *createdAt;
 @property (nonatomic) Boolean synced;
 
 - (void)setCreatedAtByString:(NSString *)date;

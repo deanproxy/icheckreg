@@ -74,11 +74,15 @@
 	Expense *expense = [[Expense alloc] init];
 	expense.note = self.description.text;
 	expense.total = [NSNumber numberWithFloat:expenseAmount];
-	expense.created_at = [[NSDate alloc] init];
+	expense.createdAt = [NSNull null];
 	[expense save];
 
     total += expenseAmount;
-	Total *totalObj = [Total findById:0];
+	Total *totalObj = [Total findById:1];
+    if (!totalObj) {
+        /* in case table hasn't be created yet */
+        totalObj = [[Total alloc] init];
+    }
 	totalObj.total = [NSNumber numberWithFloat:total];
 	[totalObj save];
 

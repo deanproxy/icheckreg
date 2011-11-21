@@ -9,7 +9,23 @@
 #import "ActiveRecord.h"
 
 static FMDatabase *database = nil;
-static NSMutableArray *propertyNames = nil;
+
+@interface PropertyInfo : NSObject {
+
+}
+
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *type;
+@property (nonatomic, retain) id value;
+
+@end
+
+@implementation PropertyInfo
+
+@synthesize name = _name;
+@synthesize type = _type;
+
+@end
 
 @implementation ActiveRecord
 
@@ -23,32 +39,54 @@ static NSMutableArray *propertyNames = nil;
 	database = db;
 }
 
-+ (NSArray *)getPropertyNames {
-	if (propertyNames) {
-		return propertyNames;
-	}
-	propertyNames = [NSMutableArray array];
+/* TODO: FIXME: Can we make this more robust? Look at the attribute string more closely and parse better. */
++ (NSString *)propertyTypeFromString:(NSString *)attributeString {
+    // Format should be T@"Type",&,Vstuff
+    NSString *type = @"Native";
+    NSArray *components = [attributeString componentsSeparatedByString:@"\""];
+    if ([components count] >= 2) {
+        NSString *afterQuote = [components objectAtIndex:1];
+        components = [afterQuote componentsSeparatedByString:@"\""];
+        type = [components objectAtIndex:0];
+    }
+    return type;
+}
+
++ (NSArray *)getPropertyInfo {
+	NSMutableArray *propertyNames = [NSMutableArray array];
 	u_int propertyCount = 0;
 	objc_property_t *properties = class_copyPropertyList([self class], &propertyCount);
+    id klass = [[self alloc] init];
 
 	for (int i=0; i < propertyCount; i++) {
+        PropertyInfo *propertyInfo = [[PropertyInfo alloc] init];
 		objc_property_t property = properties[i];
 		const char *name = property_getName(property);
-		[propertyNames addObject:[NSString stringWithCString:name encoding:NSUTF8StringEncoding]];
+        propertyInfo.name = [NSString stringWithUTF8String:name];
+        NSString *attributes = [NSString stringWithUTF8String:property_getAttributes(property)];
+        propertyInfo.type = [self propertyTypeFromString:attributes];
+		[propertyNames addObject:propertyInfo];
 	}
 	return propertyNames;
 }
 
 + (NSArray *)resultsToArrayOfClass:(FMResultSet *)results {
 	NSMutableArray *objects = [NSMutableArray array];
-	NSArray *properties = [self getPropertyNames];
-	while ([results next]) {
-		id klass = [self class];
-		id row = [[klass alloc] init];
+	NSArray *properties = [self getPropertyInfo];
 
-		for (NSString *name in properties) {
-			id value = [results objectForColumnName:name];
-			[row setValue:value forKey:name];						
+	while ([results next]) {
+		id row = [[self alloc] init];
+
+		for (PropertyInfo *property in properties) {
+			id value = [results objectForColumnName:property.name];
+            /* Dates come back as strings, so make sure we transform them into NSDate */
+            if ([property.type compare:@"NSDate"] == 0) {
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateFormat:DB_DATE_FORMAT];
+                [row setValue:[formatter dateFromString:value] forKey:property.name];
+            } else {
+                [row setValue:value forKey:property.name];
+            }
 		}
 		[objects addObject:row];
 	}
@@ -110,6 +148,53 @@ static NSMutableArray *propertyNames = nil;
 
 - (void)save {
 	[ActiveRecord assertDatabaseValid];
+    
+    NSMutableString *query = [[NSMutableString alloc] init];
+    NSArray *properties = [[self class] getPropertyInfo];
+    NSMutableArray *values = [NSMutableArray array];
+    NSUInteger propertyCount = [properties count];
+
+    /* TODO: Update doesn't work right now because we aren't getting our primarykey back in the properties! */
+    if (self.primaryKey > 0) {
+        /* Update */
+        [query appendFormat:@"update %@ set ", [self class]];
+        for (int i=0; i < propertyCount; i++) {
+            PropertyInfo *property = [properties objectAtIndex:i];
+            id value = [self valueForKey:property.name];
+            if (![value isKindOfClass:[NSNull class]]) {
+                [query appendFormat:@"%@ = ?", property.name];
+                [values addObject:value];
+                if (i+1 < propertyCount) {
+                    [query appendString:@", "];
+                }
+            }
+        }
+    } else {
+        /* Insert */
+        [query appendFormat:@"insert into %@ (", [self class]];
+        for (int i=0; i < propertyCount; i++) {
+            PropertyInfo *property = [properties objectAtIndex:i];
+            id value = [self valueForKey:property.name];
+            if (![value isKindOfClass:[NSNull class]]) {
+                [query appendFormat:@"%@", property.name];
+                [values addObject:value];
+                if (i+1 < propertyCount) {
+                    [query appendString:@","];
+                }
+            }
+        }
+        [query appendFormat:@") values("];
+        NSUInteger valueCount = [values count];
+        for (int i=0; i < valueCount; i++) {
+            [query appendFormat:@"?"];
+            if (i+1 < valueCount) {
+                [query appendString:@", "];
+            }
+        }
+        [query appendString:@")"];
+    }
+    
+    [database executeUpdate:query withArgumentsInArray:values];
 }
 
 - (void)delete {

@@ -28,7 +28,6 @@
 		05E43F1614564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05E43F1314564F1500C17EA7 /* checkreg.xcdatamodeld */; };
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
 		5E43F1614564F1500C17EA9 /* Expense.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EA8 /* Expense.m */; };
-		5E43F1614564F1500C17EB3 /* CheckregDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EB2 /* CheckregDatabase.m */; };
 		5E43F1614564F1500C17EB6 /* Total.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EB5 /* Total.m */; };
 		5E43F1614564F1500C17EB9 /* ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EB8 /* ActiveRecord.m */; };
 		5E43F1614564F1500C17EBE /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43F1614564F1500C17EBD /* FMDatabase.m */; };
@@ -36,18 +35,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		05965E72145B67B40009BBAD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			proxyType = 2;
-			remoteGlobalIDString = 8DD76FA10486AA7600D96B5E;
-			remoteInfo = fmdb;
-		};
-		05965E74145B67B40009BBAD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			proxyType = 2;
-			remoteGlobalIDString = EE4290EF12B42F870088BD94;
-			remoteInfo = FMDB;
-		};
 		05C20B0814537FCF004F3E77 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 05C20AD314537FCE004F3E77 /* Project object */;
@@ -87,8 +74,6 @@
 		320AF8492C47A4D819F7C450 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.frameworks; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5E43F1614564F1500C17EA8 /* Expense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expense.m; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EAA /* Expense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expense.h; sourceTree = "<group>"; };
-		5E43F1614564F1500C17EB2 /* CheckregDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckregDatabase.m; sourceTree = "<group>"; };
-		5E43F1614564F1500C17EB4 /* CheckregDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckregDatabase.h; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EB5 /* Total.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Total.m; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EB7 /* Total.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Total.h; sourceTree = "<group>"; };
 		5E43F1614564F1500C17EB8 /* ActiveRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiveRecord.m; sourceTree = "<group>"; };
@@ -125,15 +110,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05965E55145B67B30009BBAD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				05965E73145B67B40009BBAD /* fmdb */,
-				05965E75145B67B40009BBAD /* libFMDB.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		05C20AD114537FCE004F3E77 = {
 			isa = PBXGroup;
 			children = (
@@ -171,8 +147,6 @@
 			children = (
 				5E43F1614564F1500C17EB7 /* Total.h */,
 				5E43F1614564F1500C17EB5 /* Total.m */,
-				5E43F1614564F1500C17EB4 /* CheckregDatabase.h */,
-				5E43F1614564F1500C17EB2 /* CheckregDatabase.m */,
 				5E43F1614564F1500C17EAA /* Expense.h */,
 				5E43F1614564F1500C17EA8 /* Expense.m */,
 				05C20AEF14537FCE004F3E77 /* icheckregAppDelegate.h */,
@@ -300,11 +274,6 @@
 			mainGroup = 05C20AD114537FCE004F3E77;
 			productRefGroup = 05C20ADD14537FCE004F3E77 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 05965E55145B67B30009BBAD /* Products */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				05C20ADB14537FCE004F3E77 /* icheckreg */,
@@ -312,23 +281,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		05965E73145B67B40009BBAD /* fmdb */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = fmdb;
-			remoteRef = 05965E72145B67B40009BBAD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		05965E75145B67B40009BBAD /* libFMDB.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libFMDB.a;
-			remoteRef = 05965E74145B67B40009BBAD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		05C20ADA14537FCE004F3E77 /* Resources */ = {
@@ -379,7 +331,6 @@
 				05C20B25145484D3004F3E77 /* AddExpenseViewController.m in Sources */,
 				05E43F1514564F1500C17EA7 /* checkreg.xcdatamodeld in Sources */,
 				5E43F1614564F1500C17EA9 /* Expense.m in Sources */,
-				5E43F1614564F1500C17EB3 /* CheckregDatabase.m in Sources */,
 				5E43F1614564F1500C17EB6 /* Total.m in Sources */,
 				5E43F1614564F1500C17EB9 /* ActiveRecord.m in Sources */,
 				5E43F1614564F1500C17EBE /* FMDatabase.m in Sources */,

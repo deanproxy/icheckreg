@@ -26,11 +26,11 @@
 	self.db.traceExecution = YES;
 	[ActiveRecord setDatabase:self.db];
 
-    NSString *query = @"create table if not exists Expense (primaryKey integer primary key autoincrement, synced boolean not null default false, note varchar(50) not null, total float not null, created_at datetime not null default current_timestamp)";
-    [self.db executeQuery:query];
+    NSString *query = @"create table if not exists Expense (primaryKey integer primary key autoincrement, synced boolean not null default false, note varchar(50) not null, total float not null, createdAt timestamp default current_timestamp)";
+    [self.db executeUpdate:query];
 
     query = @"create table if not exists Total (primaryKey integer primary key autoincrement, total float not null)";
-    [self.db executeQuery:query];
+    [self.db executeUpdate:query];
 
     return YES;
 }
@@ -70,14 +70,14 @@
 	- Make this function callable from any place that this is its delegate.
 */
 - (void)backgroundTaskToSyncData {
-	NSString *query = @"select id,note,total,created_at from expenses where synced='false'";
+	NSString *query = @"select id,note,total,createdAt from expenses where synced='false'";
 	NSArray *expenses = nil; // [Expense findByColumn:@"synced" value:@"false"];
 	NSMutableArray *array = [[NSMutableArray alloc] init];
 	NSMutableString *ids = [[NSMutableString alloc] init];
 
 	for (Expense *expense in expenses) {
 		NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:expense.note, @"note", expense.total,
-						@"total", expense.created_at, @"created_at", nil];
+						@"total", expense.createdAt, @"createdAt", nil];
 		[array addObject:[dict copy]];
 		[ids appendFormat:@"%d,", expense.primaryKey];
 	}

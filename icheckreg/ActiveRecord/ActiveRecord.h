@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 
+#define DB_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
+
 @interface ActiveRecord : NSObject {
 
 }
